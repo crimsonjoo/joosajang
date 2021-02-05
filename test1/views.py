@@ -152,7 +152,6 @@ def detail(request,idx):  # 여기선 결과물이  idx 0 : 종목 분석 결과
         plt.legend(loc='upper left')
         plt.savefig('./test1/static/test1/photo1.jpg')
         return render(request, 'test1/result1_2.html', {'start':start_date,'today':today_str,'code':code,'name':name,'returns':int(returns),'buy_list':buy_list,'sell_list':sell_list})
-
     elif idx == 2:  #마법공식
         def get_html_fnguide(ticker, gb):
             """
