@@ -1,0 +1,375 @@
+@import "reset.css";
+
+@font-face {
+    font-family: 'KOTRA_BOLD-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.1/KOTRA_BOLD-Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'MaplestoryOTFBold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/MaplestoryOTFBold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'BMJUA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/BMJUA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+font-family: 'BMHANNAPro';
+src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_seven@1.0/BMHANNAPro.woff') format('woff');
+font-weight: normal;
+font-style: normal;
+}
+
+body {
+        background-color: #a8d3e2;
+        font-family: 'MaplestoryOTFBold';
+}
+
+.title2 {
+    font-family: 'BMJUA';
+    text-align : center;
+    font-size:6rem;
+    margin-top:6rem;
+    margin-bottom:1rem;
+}
+
+.big-bubble {
+    display : flex;
+    flex-direction : column;
+    align-items: center;
+}
+
+.align-text-box {
+    display : flex;
+    flex-direction : column;
+}
+
+
+.nametag {
+    font-size: 3.5rem;
+    text-align : left;
+    margin-top: 10.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.nametag_close {
+    font-size: 3rem;
+    text-align : left;
+    margin-top: 7rem;
+    margin-bottom: 2.5rem;
+}
+.content {
+    color:white;
+    font-size: 1.7rem;
+    text-align : left;
+    margin-top: 1rem;
+}
+
+.content_tip {
+    font-size: 1.5rem;
+    text-align : left;
+    padding-left : 9rem;
+    margin-top: 1rem;
+}
+
+.higlight_conent {
+    font-size: 1.7rem;
+    margin-top: 1rem;
+    padding-left : 0.7rem;
+}
+
+.start_higlight_conent {
+    font-size: 1.7rem;
+    margin-top: 1rem;
+}
+
+.content_tail {
+    color:white;
+    font-size: 1.7rem;
+    margin-top: 1rem;
+}
+
+.content_space_tail {
+    color:white;
+    font-size: 1.7rem;
+    padding-left : 0.7rem;
+    margin-top: 1rem;
+}
+
+.text-box {
+    display : flex;
+}
+
+.tip-box {
+    display : flex;
+}
+
+.tip {
+    color: #700618;
+    font-size: 1.7rem;
+    padding-bottom : 0.5rem;
+    padding-top:8rem;
+}
+
+.tip_content {
+    color : white;
+    padding-top : 0.7rem;
+    font-size: 1rem;
+}
+
+.tip_highlight_start_content {
+    color: #700618 ;
+    padding-top : 0.7rem;
+    font-size: 1rem;
+}
+
+.tip_highlight_content {
+    color: #700618 ;
+    padding-top : 0.7rem;
+    font-size: 1rem;
+    padding-left : 0.6rem;
+}
+
+.tip_content_tail {
+    color : white;
+    padding-top : 0.7rem;
+    font-size: 1rem;
+}
+
+
+.subtitle {
+    border-top:4rem;
+}
+
+.subtext2 {
+    font-family: 'MaplestoryOTFBold';
+    text-align : center;
+    font-size: 3.2rem;
+    padding-top:7rem;
+}
+
+.btn_idx_group {
+    margin-top : 4rem;
+    margin-bottom : 5rem;
+    display : flex;
+    flex-direction : column;
+    align-items : center;
+}
+
+.btn_idx_group2 {
+    margin-top : 4rem;
+    margin-bottom : 5rem;
+    display : flex;
+    justify-content:space-evenly;
+}
+
+.btn_idx_group_close {
+    margin-top : 3rem;
+    margin-bottom : 5rem;
+    display : flex;
+    flex-direction : column;
+    align-items : center;
+}
+
+.btn-group {
+    padding-top : 3rem;
+}
+
+.btn-group_vert {
+    padding-top : 4rem;
+}
+
+.btn {
+    font-size:2.5rem;
+}
+
+.btn-box {
+    margin-top : 1.5rem;
+    display : flex;
+    justify-content : center;
+}
+
+.small_btn {
+    font-size:1.5rem;
+}
+
+.medium_btn {
+    font-size:2rem;
+}
+
+
+button {
+color: white;
+font-family: 'MaplestoryOTFBold';
+background-color: #fab70f;
+border-style: solid;
+border-bottom-color: #ad7900;
+border-width: 0px;
+border-bottom-width: 0.43rem;
+border-radius: 0.75rem;
+padding: 0.5rem;
+}
+button:active {
+border-bottom-width: 0px;
+position: relative;
+top: 0.43rem;
+}
+button:focus {
+outline: none;
+}
+
+.btn_special {
+color: white;
+font-family: 'MaplestoryOTFBold';
+background-color: #fc6e6e;
+border-style: solid;
+border-bottom-color: #df4343;
+border-width: 0px;
+border-bottom-width: 0.43rem;
+border-radius: 0.75rem;
+padding: 0.5rem;
+}
+.btn_special:active {
+border-bottom-width: 0px;
+position: relative;
+top: 0.43rem;
+}
+.btn_special:focus {
+outline: none;
+}
+
+
+
+
+.img_caption {
+    text-align : center;
+    font-size: 2rem;
+    margin: 2.7em 0 .75em;
+}
+
+.img_box {
+    display : flex;
+    justify-content: center;
+    align-items:center;
+}
+
+
+.table_box {
+    display : flex;
+    justify-content: center;
+    padding-top : 6rem;
+    padding-bottom : 3rem;
+}
+
+.little_table_box {
+    display : flex;
+    justify-content: center;
+    padding-bottom : 1rem;
+}
+
+.little_table {
+    display : flex;
+    flex-direction : column;
+    justify-content : center;
+    align-items : center;
+}
+
+
+table {
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 80%;
+  table-layout: fixed;
+}
+
+table caption {
+  font-size: 2em;
+  margin: .5em 0 .75em;
+}
+
+table tr {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  padding: .35em;
+}
+
+table th,
+table td {
+  padding: .625em;
+  text-align: center;
+}
+
+table th {
+  font-size: .85em;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+@media screen and (max-width: 600px) {
+  table {
+    border: 0;
+  }
+
+  table caption {
+    font-size: 1.3em;
+  }
+
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+
+  table tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: .625em;
+  }
+
+  table td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: .8em;
+    text-align: right;
+  }
+
+  table td::before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  table td:last-child {
+    border-bottom: 0;
+  }
+}
+
+table tr:hover {
+    background-color:#191919;
+    color:white;
+}
+
+table th {
+    background-color:#FAB70F;
+    font-size:1.3rem;
+}

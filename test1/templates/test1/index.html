@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+{% load static %}
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="{% static 'test1/style_blank13.css' %}">
+    <link rel="icon" href="{% static 'main/favicon.ico' %}">
+  <script type="text/javascript" src="/static/main/cat.js"></script>
+  <title>종목 선정 검사</title>
+</head>
+
+<body>
+    <div class="subtite">
+        <h1 class="subtext2">자가진단을 통해 투자성향을 파악하고</h1>
+        <h1 class="subtext2">당신의 성향에 맞는 투자 종목을 선정받으세요!</h1>
+    </div>
+
+
+    <div class="btn_idx_group">
+        <div class="btn-group test">
+          <a href="{% url 'test1:question1' %}" class="btn btn-info">
+            <button>
+              <h1 class="btn">시작하기</h1>
+            </button>
+          </a>
+        </div>
+
+        <div class="btn-group_vert test">
+          <a href="{% url 'test1:index2' %}" class="btn btn-info">
+            <button>
+              <h1 class="small_btn">사용자 지정 조회</h1>
+            </button>
+          </a>
+        </div>
+    </div>
+
+</body>
+</html>
+
+<!--Copyright (c) 2021 by CookiePanda (https://codepen.io/CookiePanda/pen/XqWvdW)-->
+
+<!--Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:-->
+
+<!--The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.-->
+
+<!--THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.-->
+
+
+<!--Copyright (c) 2021 by Philip Park (https://codepen.io/PhilipMothPark/pen/XMrPRw)-->
+
+<!--Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:-->
+
+<!--The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.-->
+
+<!--THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.-->

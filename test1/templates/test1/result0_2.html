@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+
+{% load static %}
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="{% static 'test1/style_blank13.css' %}">
+    <link rel="icon" href="{% static 'main/favicon.ico' %}">
+  <script type="text/javascript" src="/static/main/cat.js"></script>
+  <title>주사장의 보고서</title>
+</head>
+
+<body>
+
+    <h1 class="title2">종목 분석 보고서</h1>
+
+    <h1 class="img_caption">{{name}} ({{code}})</h1>
+    <div class="img_box">
+        <img src="{% static "test1/photo0.jpg" %}">
+    </div>
+
+    <div class="table_box">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">단순 수익률(%)</th>
+              <th scope="col">연평균 복리 수익률(%)</th>
+              <th scope="col">최대 낙폭(%)</th>
+              <th scope="col">변동성(%)</th>
+              <th scope="col">샤프 지수</th>
+            </tr>
+          </thead>
+              <tbody>
+                <tr>
+                    <td data-label="Account">{{returns}}</td>
+                    <td data-label="Due Date">{{CAGR}}</td>
+                    <td data-label="Amount">{{MDD}}</td>
+                    <td data-label="Period">{{VOL}}</td>
+                    <td data-label="Period">{{SHARPE}}</td>
+                </tr>
+              </tbody>
+        </table>
+    </div>
+    <div class="big-bubble">
+        <div class="align-text-box">
+            <div class="text-box">
+                <h1 class="start_higlight_conent">단순 수익률 : 해당 종목의 투자 기간({{start}} ~ {{today}}) 발생한 수익률 입니다.</h1>
+            </div>
+
+            <div class="text-box">
+                <h1 class="content"></h1>
+            </div>
+            <div class="text-box">
+                <h1 class="start_higlight_conent">연평균 복리 수익률 : 장기투자의 수익률을 평가할 때 반드시 연평균 증가율을 확인 해야합니다.</h1>
+            </div>
+
+            <div class="text-box">
+                <h1 class="content"></h1>
+            </div>
+
+            <div class="text-box">
+                <h1 class="start_higlight_conent">최대 낙폭 : 해당 종목의 투자자가 겪을 수 있는 최대 고통을 측정하는 지수이며 낮을수록 좋습니다.</h1>
+            </div>
+
+            <div class="text-box">
+                <h1 class="content"></h1>
+            </div>
+
+            <div class="text-box">
+                <h1 class="start_higlight_conent">변동성 : 수익률의 표준 편차로 계산하며 이 수치가 낮을수록 흐름이 안정적이라는 의미입니다.</h1>
+            </div>
+
+            <div class="text-box">
+                <h1 class="content"></h1>
+            </div>
+            <div class="text-box">
+                <h1 class="start_higlight_conent">샤프 지수 : 위험 대비 수익성을 표현하며 보통 1 이상만 되어도 충분하다고 판단합니다.</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="big-bubble">
+        <h1 class="tip">주사장's TIP</h1>
+        <div class="align-text-box">
+            <div class="tip-box">
+                <h1 class="tip_content">전설적인 투자자 워렌 버핏의 연평균 복리 수익률이 얼마인지 아십니까?</h1>
+                <h1 class="tip_highlight_content">대략 20%</h1>
+                <h1 class="tip_content_tail">입니다. 예상했던 것보다 수익률이 너무 낮다고 생각하시나요?</h1>
+            </div>
+            <h1 class="tip_content">그러나 놀랍게도 그는 50년이 넘는 기간 매년 복리 수익률 20%를 통해 지금의 어마어마한 부를 축적할 수 있었습니다. 때문에 만일 누군가 주식시장에서</h1>
+            <div class="tip-box">
+                <h1 class="tip_content">연평균 20%의 수익률을 기록한다면 그는 엄청난 고수라 할 수 있습니다. 따라서 </h1>
+                <h1 class="tip_highlight_content">퀀트 투자에서는 수익률을 높이는 것 보다 최대 낙폭을 낮추고 샤프 지수를</h1>
+            </div>
+            <div class="tip-box">
+                <h1 class="tip_highlight_start_content">통해 위험대비 수익률을 관리하는 것을 중요하게 생각합니다.</h1>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="btn_idx_group">
+        <div class="btn-group test">
+          <a href="{% url 'test1:result' num=0 %}" class="btn btn-info">
+            <button>
+              <h1 class="btn">재설정하기</h1>
+            </button>
+          </a>
+        </div>
+        <div class="btn-group_vert test">
+          <a href="{% url 'main:index' %}" class="btn btn-info">
+            <button>
+              <h1 class="small_btn">메인화면으로</h1>
+            </button>
+          </a>
+        </div>
+    </div>
+
+</body>
+</html>
+
+<!--Copyright (c) 2021 by CookiePanda (https://codepen.io/CookiePanda/pen/XqWvdW)-->
+
+<!--Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:-->
+
+<!--The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.-->
+
+<!--THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.-->
+
+
+<!--Copyright (c) 2021 by Philip Park (https://codepen.io/PhilipMothPark/pen/XMrPRw)-->
+
+<!--Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:-->
+
+<!--The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.-->
+
+<!--THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.-->

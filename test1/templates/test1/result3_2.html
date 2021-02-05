@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+
+{% load static %}
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="{% static 'test1/style_blank13.css' %}">
+    <link rel="icon" href="{% static 'main/favicon.ico' %}">
+  <script type="text/javascript" src="/static/main/cat.js"></script>
+  <title>주사장의 보고서</title>
+</head>
+
+<body>
+    <h1 class="title2">종목 선정 보고서</h1>
+    <div class="big-bubble">
+        <h1 class="nametag">듀얼 모멘텀의 선정 종목</h1>
+        <div class="align-text-box">
+            <div class="text-box">
+                <h1 class="content">해당 보고서는 듀얼 모멘텀전략을</h1>
+                <h1 class="higlight_conent">금일({{today}}일) 기준</h1>
+                <h1 class="content_tail">으로 KOSDAQ 시장에 적용해 산출한 결과물입니다.</h1>
+            </div>
+
+            <div class="text-box">
+                <h1 class="start_higlight_conent">절대 모멘텀은</h1>
+                <h1 class="content_space_tail">자산의 가치가 상승하고 있을 때,</h1>
+                <h1 class="higlight_conent">상대 모멘텀은</h1>
+                <h1 class="content_space_tail">특정 기간동안 높은 수익률을 보인 종목</h1>
+                <h1 class="content_tail">에 투자할 수 있게합니다.</h1>
+            </div>
+
+            <div class="text-box">
+                <h1 class="content">듀얼 모멘텀을 개발한 게리 안토나치는 이 전략을 쉽게</h1>
+                <h1 class="higlight_conent">'달리는 말에 올라타라!'</h1>
+                <h1 class="content_space_tail">라고 말했습니다.</h1>
+                <h1 class="content_tail">그는 이 전략을 이용해 16년간</h1>
+            </div>
+
+            <div class="text-box">
+                <h1 class="start_higlight_conent">1096%의 수익률</h1>
+                <h1 class="content_tail">을 올렸습니다.그는 12개월을 기준으로 듀얼 모멘텀 전략을 사용했으나, 21세기 한국의 주식시장에서는 보다 짧은</h1>
+                <h1 class="higlight_conent"></h1>
+            </div>
+
+            <div class="text-box">
+                <h1 class="start_higlight_conent">3개월 듀얼 모멘텀 전략을 사용했을때 훨씬 높은 수익률을</h1>
+                <h1 class="higlight_conent">볼 수 있었다고 합니다.</h1>
+                <h1 class="content_tail">실제로 국내 주식 종목들에 대해 적용해본 결과</h1>
+            </div>
+            <div class="text-box">
+                <h1 class="content">3개월을 기준으로 듀얼 모멘텀을 적용해 소수의 종목에 선택과 집중했을때</h1>
+                <h1 class="higlight_conent"> 수익률이 증가</h1>
+                <h1 class="content_tail">했습니다.따라서</h1>
+                <h1 class="higlight_conent">3개월 듀얼 모멘텀 전략</h1>
+            </div>
+            <h1 class="content">을 오늘 날짜를 기준으로 사용해 엄선한 종목들을 도표에 정리해 두었습니다.또한 해당 종목들을 분산투자 시 포트폴리오를 유리하게</h1>
+
+            <div class="text-box">
+                <h1 class="content">준비 할 수 있도록 다양한 성능지표와 시뮬레이션을 이용한 자료 또한 준비해 놓았습니다.</h1>
+                <h1 class="higlight_conent">여러분의 성공적인 투자를 기원합니다!</h1>
+            </div>
+        </div>
+    </div>
+    <div class="table_box">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">종목코드</th>
+              <th scope="col">종목명</th>
+              <th scope="col">과거가(원)</th>
+              <th scope="col">현재가(원)</th>
+              <th scope="col">연간 수익률(%)</th>
+            </tr>
+          </thead>
+              <tbody>
+              {% for row in table %}
+                <tr>
+                    {% for element in row %}
+                        <td data-label="Account">{{element}}</td>
+                    {% endfor %}
+                </tr>
+              {% endfor %}
+              </tbody>
+        </table>
+    </div>
+    <div class="big-bubble">
+        <h1 class="nametag_close">효율적 분산투자를 위한 포트폴리오</h1>
+        <div class="align-text-box">
+            <div class="text-box">
+                <h1 class="content">다음은 노벨 경제학상을 수상한 해리 마코위츠의</h1>
+                <h1 class="higlight_conent">현대 포트폴리오 이론을 듀얼 모멘텀전략으로 선정한 종목들에 적용한 그래프</h1>
+                <h1 class="content_tail">입니다.</h1>
+            </div>
+
+            <div class="text-box">
+                <h1 class="start_higlight_conent">몬테카를로 시뮬레이션</h1>
+                <h1 class="content_tail">을 사용하기위해 앞서 선정한 종목들에 대해 분산투자한 임의의 30,000개의 포트폴리오들을 생성했습니다.</h1>
+            </div>
+
+            <div class="text-box">
+                <h1 class="content">이후 각종 성능지표를 이용해 30,000개의 포트폴리오들을 각각 분석해</h1>
+                <h1 class="higlight_conent">최고의 효율을 보인 두가지 포트폴리오(★,●)</h1>
+                <h1 class="content_tail">를 구했습니다.</h1>
+                <h1 class="higlight_conent"></h1>
+                <h1 class="content_tail"></h1>
+            </div>
+
+            <div class="text-box">
+                <h1 class="content">이는 분산투자시 발생하는</h1>
+                <h1 class="higlight_conent">리스크당 수익률이 가장 큰 포트폴리오(★)</h1>
+                <h1 class="content_tail">와</h1>
+                <h1 class="higlight_conent">손실 위험도가 가장 적은 포트폴리오(●)</h1>
+                <h1 class="content_tail">입니다.</h1>
+            </div>
+        </div>
+    </div>
+
+    <h1 class="img_caption"></h1>
+    <div class="img_box">
+        <img src="{% static "test1/montekarlo1.jpg" %}">
+    </div>
+
+    <div class="little_table_box">
+        <div class="little_table">
+            <h1 class="img_caption">리스크당 수익률이 가장 큰 포트폴리오 (★)</h1>
+            <div class="img_box">
+                <table>
+                  <thead>
+                    <tr>
+                      <th scope="col">종목코드</th>
+                      <th scope="col">종목명</th>
+                      <th scope="col">보유 비율(%)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {% for row in max_sharpe %}
+                    <tr>
+                        {% for element in row %}
+                            <td data-label="Account">{{element}}</td>
+                        {% endfor %}
+                    </tr>
+                  {% endfor %}
+                  </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="little_table">
+            <h1 class="img_caption">손실 위험도가 가장 적은 포트폴리오 (●)</h1>
+            <div class="img_box">
+                <table>
+                  <thead>
+                    <tr>
+                        <th scope="col">종목코드</th>
+                      <th scope="col">종목명</th>
+                      <th scope="col">보유 비율(%)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {% for row in min_risk %}
+                    <tr>
+                        {% for element in row %}
+                            <td data-label="Account">{{element}}</td>
+                        {% endfor %}
+                    </tr>
+                  {% endfor %}
+                  </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="btn_idx_group">
+        <div class="btn-group test">
+          <a href="{% url 'main:index' %}" class="btn btn-info">
+            <button>
+              <h1 class="btn">메인화면으로</h1>
+            </button>
+          </a>
+        </div>
+    </div>
+
+</body>
+</html>
+
+<!--Copyright (c) 2021 by CookiePanda (https://codepen.io/CookiePanda/pen/XqWvdW)-->
+
+<!--Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:-->
+
+<!--The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.-->
+
+<!--THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.-->
+
+
+<!--Copyright (c) 2021 by Philip Park (https://codepen.io/PhilipMothPark/pen/XMrPRw)-->
+
+<!--Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:-->
+
+<!--The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.-->
+
+<!--THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.-->

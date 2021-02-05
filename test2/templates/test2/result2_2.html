@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+
+{% load static %}
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="{% static 'test2/style_blank4.css' %}">
+    <link rel="icon" href="{% static 'main/favicon.ico' %}">
+  <script type="text/javascript" src="/static/main/cat.js"></script>
+  <title>주사장의 보고서</title>
+</head>
+
+<body>
+
+    <h1 class="title2">매매 시기 보고서</h1>
+    <div class="big-bubble">
+        <h1 class="nametag">삼중창 매매 시기</h1>
+        <div class="align-text-box">
+            <div class="text-box">
+                <h1 class="content">삼중창 매매전략을 </h1>
+                <h1 class="higlight_conent">{{name}} 시계열 데이터({{start}} ~ {{today}})</h1>
+                <h1 class="content_tail">에 적용한 결과물입니다.</h1>
+            </div>
+
+            <div class="text-box">
+                <h1 class="content">해당 전략은 </h1>
+                <h1 class="higlight_conent">EMA(지수 이동평균)와 스토캐스틱(%D)</h1>
+                <h1 class="content_tail">을 이용해 세 단계의 창에서 동일한 신호를 확인해야만 매매합니다.</h1>
+            </div>
+
+            <div class="text-box">
+                <h1 class="content">추세와 역추세를 함께 분석하며, 매매 신호를 세 단계의 창을 거쳐 확인하기 때문에 기타 전략들에 비해 신호 발생 빈도가</h1>
+            </div>
+
+            <div class="text-box">
+                <h1 class="content">적을 수 있지만 그만큼 신뢰도가 높은 편입니다. 주사장은 여러분을 위해</h1>
+                <h1 class="higlight_conent">삼중창 매매를 이용했을 경우 발생한 누적 수익률,</h1>
+            </div>
+            <div class="text-box">
+                <h1 class="start_higlight_conent">최적의 매매 일자</h1>
+                <h1 class="content_tail">를 준비했습니다.</h1>
+            </div>
+
+        </div>
+    </div>
+    <div class="table_box">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">종목코드</th>
+              <th scope="col">종목명</th>
+              <th scope="col">시작일</th>
+              <th scope="col">종료일(오늘)</th>
+              <th scope="col">누적 수익률(%)</th>
+            </tr>
+          </thead>
+              <tbody>
+                <tr>
+                    <td data-label="Account">{{code}}</td>
+                    <td data-label="Due Date">{{name}}</td>
+                    <td data-label="Amount">{{start}}</td>
+                    <td data-label="Period">{{today}}</td>
+                    <td data-label="Period">{{returns}}</td>
+                </tr>
+              </tbody>
+        </table>
+    </div>
+
+    <div class="big-bubble">
+        <h1 class="nametag_close">매수/매도 시기 판단 기준</h1>
+        <div class="align-text-box">
+
+            <div class="text-box">
+                <h1 class="start_higlight_conent">매수 : 130일 지수 이동평균(EMA)가 상승, 스토캐스틱(%D)가 20 미만</h1>
+            </div>
+
+            <div class="text-box">
+                <h1 class="content"></h1>
+            </div>
+
+            <div class="text-box">
+                <h1 class="start_higlight_conent">매도 : 130일 지수 이동평균(EMA)가 하락, 스토캐스틱(%D)가 80 초과</h1>
+            </div>
+        </div>
+    </div>
+
+    <h1 class="img_caption"></h1>
+    <div class="img_box">
+        <img src="{% static "test2/photo2.jpg" %}">
+    </div>
+
+    <div class="little_table_box">
+        <div class="little_table">
+            <h1 class="img_caption">최적의 매수 시기</h1>
+            <div class="img_box">
+                <table>
+                  <thead>
+                    <tr>
+                      <th scope="col">매수일</th>
+                      <th scope="col">종가(원)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {% for row in buy_list %}
+                    <tr>
+                        {% for element in row %}
+                            <td data-label="Account">{{element}}</td>
+                        {% endfor %}
+                    </tr>
+                  {% endfor %}
+                  </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="little_table">
+            <h1 class="img_caption">최적의 매도 시기</h1>
+            <div class="img_box">
+                <table>
+                  <thead>
+                    <tr>
+                      <th scope="col">매도일</th>
+                      <th scope="col">종가(원)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {% for row in sell_list %}
+                    <tr>
+                        {% for element in row %}
+                            <td data-label="Account">{{element}}</td>
+                        {% endfor %}
+                    </tr>
+                  {% endfor %}
+                  </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="btn_idx_group">
+        <div class="btn-group test">
+          <a href="{% url 'test2:result' num=2 %}" class="btn btn-info">
+            <button>
+              <h1 class="btn">재설정하기</h1>
+            </button>
+          </a>
+        </div>
+        <div class="btn-group_vert test">
+          <a href="{% url 'main:index' %}" class="btn btn-info">
+            <button>
+              <h1 class="small_btn">메인화면으로</h1>
+            </button>
+          </a>
+        </div>
+    </div>
+</body>
+</html>
+
+<!--Copyright (c) 2021 by CookiePanda (https://codepen.io/CookiePanda/pen/XqWvdW)-->
+
+<!--Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:-->
+
+<!--The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.-->
+
+<!--THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.-->
+
+
+<!--Copyright (c) 2021 by Philip Park (https://codepen.io/PhilipMothPark/pen/XMrPRw)-->
+
+<!--Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:-->
+
+<!--The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.-->
+
+<!--THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.-->

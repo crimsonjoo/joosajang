@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+
+{% load static %}
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="{% static 'test2/style_blank4.css' %}">
+    <link rel="icon" href="{% static 'main/favicon.ico' %}">
+  <script type="text/javascript" src="/static/main/cat.js"></script>
+  <title>전략 선정 결과</title>
+</head>
+
+<body>
+
+    <h1 class="title2">볼린저 밴드 추세 추종매매</h1>
+    <div class="big-bubble">
+        <h1 class="nametag">볼린저 밴드란?</h1>
+        <div class="align-text-box">
+            <div class="text-box">
+                <h1 class="content">볼린저 밴드는 투자자들이</h1>
+                <h1 class="higlight_conent">가장 많이 사용하는 보조지표 중 하나</h1>
+                <h1 class="content_tail">입니다. 이 지표는 특히 차트를 분석해 거래하는 투자자들에게</h1>
+            </div>
+            <div class="text-box">
+                <h1 class="content">굉장히 인기있습니다. 볼린저 밴드는</h1>
+                <h1 class="higlight_conent">'주가는 이동평균선을 중심으로 일정한 범위(표준편자) 안에서 움직인다.'</h1>
+                <h1 class="content_tail">라는 전제 하에</h1>
+            </div>
+            <div class="text-box">
+                <h1 class="content">고안 되었습니다. 이 밴드에 대해 통계학에서 이르기를</h1>
+                <h1 class="higlight_conent">'주가의 95%는 볼린저 밴드의 상한선과 하한선 사이에서 움직인다'</h1>
+                <h1 class="content_tail">고</h1>
+            </div>
+            <div class="text-box">
+                <h1 class="content">합니다. 볼린저 밴드는 </h1>
+                <h1 class="higlight_conent">주가의 20일 이동평균선을 기준으로 표준편차의 2배값 만큼 위에 상한선,아래에 하한선</h1>
+                <h1 class="content_tail">을 그립니다.</h1>
+            </div>
+            <h1 class="content">따라서 밴드폭이 좁을수록 주가의 변동성이 작고, 밴드폭이 넓을수록 주가의 변동성이 크다는 것을 한눈에 볼 수 있습니다.</h1>
+        </div>
+    </div>
+    <div class="big-bubble">
+
+        <h1 class="nametag">추세 추종이란?</h1>
+        <div class="align-text-box">
+            <div class="text-box">
+                <h1 class="content">추세 추종은</h1>
+                <h1 class="higlight_conent">주가의 상승 추세에 매수, 하락 추세에 매도</h1>
+                <h1 class="content_tail">하는 전략입니다. 볼린저 밴드를 이용한 대부분의 추세 추종매매전략은</h1>
+            </div>
+            <h1 class="content">주가가 볼린저 밴드의 하한선에 닿았을때 매수하고, 상한선에 닿았을때 매도할 것입니다. 그러나 이는 잘못된 전략입니다.</h1>
+            <h1 class="content">왜냐하면 주가의 변동성과 추세는 이미 볼린저 밴드를 구축할 때 반영되었기 때문에 단순히 이를 이용해 주가의 추세를 판단 할</h1>
+            <div class="text-box">
+                <h1 class="content">수 없기 때문입니다.따라서 주사장의 추세 추종매매전략은</h1>
+                <h1 class="higlight_conent">추가 지표(볼린저 밴드지표,현금 흐름지표)</h1>
+                <h1 class="content_tail">를 이용해 동시분석합니다.</h1>
+            </div>
+            <div class="text-box">
+                <h1 class="start_higlight_conent">볼린저 밴드지표(%b)</h1>
+                <h1 class="content_tail">는 볼린저 밴드내 주가의 위치를 나타내고,</h1>
+                <h1 class="higlight_conent">현금 흐름지표(MFI)</h1>
+                <h1 class="content_tail">는 현금 흐름을 추적해 가격과 거래량을</h1>
+            </div>
+            <div class="text-box">
+                <h1 class="content">함께 분석하기에 다른 지표보다 상대적으로 신뢰도가 높습니다. 따라서</h1>
+                <h1 class="higlight_conent">가격과 거래량 지표를 동시에 이용해 기술적 분석으로</h1>
+            </div>
+            <div class="text-box">
+                <h1 class="start_higlight_conent">확신이 생긴 경우에만 매수/매도를 합니다.</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="big-bubble">
+        <h1 class="tip">주사장's TIP</h1>
+        <div class="align-text-box">
+            <div class="tip-box">
+                <h1 class="tip_highlight_start_content">결과를 찾을 수 없다면 입력한 정보가 올바른지 다시 한번 확인해주세요.만약 종목코드가 틀렸거나, 입력한 일자에 아직 해당 종목이 상장되지 않았을 경우 결과를 찾을 수 없습니다.</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="btn_idx_group_close">
+        <form action="{% url 'test2:detail' idx=0 %}" method="get">
+            <div class="label-box">
+                <label> 종목코드 : <input type="text" name="code" placeholder="ex) 005930" size="7"></label>
+                <label>/ </label>
+                <label>조회 기준일: <input type="text" name="date" placeholder="ex) 1996-02-29" size="10"></label>
+            </div>
+            <div class="btn-box">
+                <button type="submit">
+                    <h1 class="btn">매매 시기 확인하기</h1>
+                </button>
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>
+
+<!--Copyright (c) 2021 by CookiePanda (https://codepen.io/CookiePanda/pen/XqWvdW)-->
+
+<!--Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:-->
+
+<!--The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.-->
+
+<!--THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.-->
+
+
+<!--Copyright (c) 2021 by Philip Park (https://codepen.io/PhilipMothPark/pen/XMrPRw)-->
+
+<!--Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:-->
+
+<!--The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.-->
+
+<!--THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.-->

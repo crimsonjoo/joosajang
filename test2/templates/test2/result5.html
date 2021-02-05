@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+
+{% load static %}
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="{% static 'test2/style_blank4.css' %}">
+    <link rel="icon" href="{% static 'main/favicon.ico' %}">
+  <script type="text/javascript" src="/static/main/cat.js"></script>
+  <title>전략 선정 결과</title>
+</head>
+
+<body>
+
+    <h1 class="title2">골든 & 데드 크로스 (20 & 60)</h1>
+    <div class="big-bubble">
+        <h1 class="nametag">골든 & 데드 크로스란?</h1>
+        <div class="align-text-box">
+            <div class="text-box">
+                <h1 class="content">이 전략은 이동평균을 이용하기 때문에 실행하기</h1>
+                <h1 class="higlight_conent">쉬우면서도 신뢰성이 높아 많은 개인투자자들이 선호하는 투자전략</h1>
+                <h1 class="content_tail"> 입니다.</h1>
+            </div>
+            <h1 class="content">주가의 20일 지수 이동평균선(EMA20)을 단기선으로 설정하고, 60일 지수 이동평균선(EMA60)을 장기선으로 설정합니다.</h1>
+
+            <div class="text-box">
+                <h1 class="start_higlight_conent">골든크로스는</h1>
+                <h1 class="content_space_tail">단기선이 장기선을 상향 돌파하는 시점을,</h1>
+                <h1 class="higlight_conent">데드크로스는</h1>
+                <h1 class="content_space_tail">단기선이 장기선을 하향 돌파하는 시점을 의미합니다.</h1>
+            </div>
+            <h1 class="content">만약 골든크로스를 발견했다면 이는 최근 20일 동안의 매수가 60일간의 매수보다 많아졌다는 의미로 주가 상승추세라는 뜻이고,</h1>
+            <div class="text-box">
+                <h1 class="content"> 데드크로스는 그 반대인 하락추세라는 뜻입니다. 즉,</h1>
+                <h1 class="higlight_conent">골든크로스는 매수신호</h1>
+                <h1 class="content_tail">를 나타내고</h1>
+                <h1 class="higlight_conent">데드크로스는 매도신호</h1>
+                <h1 class="content_tail">를 나타냅니다.</h1>
+            </div>
+        </div>
+    </div>
+    <div class="big-bubble">
+        <h1 class="nametag">지수 이동평균이란?</h1>
+        <div class="align-text-box">
+            <div class="text-box">
+                <h1 class="content">지수 이동평균(EMA)은 모든 투자자들이 사용한다고 할 만큼 </h1>
+                <h1 class="higlight_conent">가장 인기있는 핵심 지표인 이동평균 지표중 하나</h1>
+                <h1 class="content_tail">입니다.</h1>
+            </div>
+            <div class="text-box">
+                <h1 class="content_tail">예를 들어 가장 기본적인 단순 이동평균의 경우 과거 일정 일자에 해당하는 종가 합계를 해당 일자로 나눈 값을 의미합니다.</h1>
+            </div>
+            <div class="text-box">
+                <h1 class="content">지수 이동평균은 최근 데이터일수록 가중치를 더 부여하기 때문에 단순 이동평균보다 흐름을 더 잘 반영한다고 할 수 있습니다.</h1>
+            </div>
+            <div class="text-box">
+                <h1 class="content">때문에 EMA(지수 이동평균)는 추세를 분석하는 지표로 사용될 수 있습니다.</h1>
+                <h1 class="higlight_conent">20일과 60일의 지수 이동평균을 기준으로 추세를</h1>
+            </div>
+            <div class="text-box">
+                <h1 class="start_higlight_conent">판단하는 골든 & 데드 크로스 전략의 경우 중장기매매에 적합합니다.</h1>
+            </div>
+        </div>
+    </div>
+    <div class="big-bubble">
+        <h1 class="tip">주사장's TIP</h1>
+        <div class="align-text-box">
+            <div class="tip-box">
+                <h1 class="tip_highlight_start_content">결과를 찾을 수 없다면 입력한 정보가 올바른지 다시 한번 확인해주세요.만약 종목코드가 틀렸거나, 입력한 일자에 아직 해당 종목이 상장되지 않았을 경우 결과를 찾을 수 없습니다.</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="btn_idx_group_close">
+        <form action="{% url 'test2:detail' idx=5 %}" method="get">
+            <div class="label-box">
+                <label> 종목코드 : <input type="text" name="code" placeholder="ex) 005930" size="7"></label>
+                <label>/ </label>
+                <label>조회 기준일: <input type="text" name="date" placeholder="ex) 1996-02-29" size="10"></label>
+            </div>
+            <div class="btn-box">
+                <button type="submit">
+                    <h1 class="btn">매매 시기 확인하기</h1>
+                </button>
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>
+
+<!--Copyright (c) 2021 by CookiePanda (https://codepen.io/CookiePanda/pen/XqWvdW)-->
+
+<!--Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:-->
+
+<!--The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.-->
+
+<!--THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.-->
+
+
+<!--Copyright (c) 2021 by Philip Park (https://codepen.io/PhilipMothPark/pen/XMrPRw)-->
+
+<!--Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:-->
+
+<!--The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.-->
+
+<!--THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.-->

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+{% load static %}
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="{% static 'test2/style_blank4.css' %}">
+    <link rel="icon" href="{% static 'main/favicon.ico' %}">
+  <script type="text/javascript" src="/static/main/cat.js"></script>
+  <title>투자 성과 분석</title>
+</head>
+
+<body>
+
+    <h1 class="title2">투자 성과 분석</h1>
+    <div class="big-bubble">
+        <h1 class="nametag">투자 성과 분석 지표란?</h1>
+        <div class="align-text-box">
+            <div class="text-box">
+                <h1 class="content">투자자에게 가장 큰 관심사는 아무래도 '보유종목의 주가 상승'이지만 주가의 움직임을 완벽히 예측하는 것은 불가능합니다.</h1>
+            </div>
+            <div class="text-box">
+                <h1 class="content">따라서 투자를 할 때는</h1>
+                <h1 class="higlight_conent">예측이 아닌 대응</h1>
+                <h1 class="content_tail">의 관점으로 임하는 것이 바람직합니다. 이를 위해서 우선적으로 관심 있는 종목의</h1>
+            </div>
+            <div class="text-box">
+                <h1 class="content">수익률,위험도,변동성 등을 분석하는 것은 필수입니다. 이때 분석에 사용하게 되는 지표들이 바로 투자 성과 분석 지표입니다.</h1>
+            </div>
+            <div class="text-box">
+                <h1 class="content">다양한 투자 성과 분석 지표들이 존재하지만 주사장은</h1>
+                <h1 class="higlight_conent">연평균 복리 수익률, 최대 낙폭, 변동성, 샤프 지수</h1>
+                <h1 class="content_tail">를 사용할 것입니다.</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="big-bubble">
+        <h1 class="tip">주사장's TIP</h1>
+        <div class="align-text-box">
+            <div class="tip-box">
+                <h1 class="tip_highlight_start_content">결과를 찾을 수 없다면 입력한 정보가 올바른지 다시 한번 확인해주세요.만약 종목코드가 틀렸거나, 입력한 일자에 아직 해당 종목이 상장되지 않았을 경우 결과를 찾을 수 없습니다.</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="btn_idx_group_close">
+        <form action="{% url 'test3:detail' %}" method="get">
+            <div class="label-box">
+                <label> 종목코드 : <input type="text" name="code" placeholder="ex) 005930" size="7"></label>
+                <label>/ </label>
+                <label>조회 시작일: <input type="text" name="date" placeholder="ex) 1996-02-29" size="10"></label>
+            </div>
+            <div class="btn-box">
+                <button type="submit">
+                    <h1 class="btn">분석하기</h1>
+                </button>
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>
+
+<!--Copyright (c) 2021 by CookiePanda (https://codepen.io/CookiePanda/pen/XqWvdW)-->
+
+<!--Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:-->
+
+<!--The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.-->
+
+<!--THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.-->
+
+
+<!--Copyright (c) 2021 by Philip Park (https://codepen.io/PhilipMothPark/pen/XMrPRw)-->
+
+<!--Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:-->
+
+<!--The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.-->
+
+<!--THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.-->
