@@ -15,7 +15,6 @@ Including another URLconf
 """
 from django.urls import include, path
 from django.contrib import admin
-from django.conf.urls import handler404,handler400,handler500
 
 
 urlpatterns = [
@@ -26,8 +25,3 @@ urlpatterns = [
     path('test3/', include('test3.urls')),
     path('test4/', include('test4.urls')),
 ]
-
-
-handler400 = 'main.views.bad_request'   # 오류 페이지
-handler404 = 'main.views.page_not_found'   # 오류 페이지
-handler500 = 'main.views.server_error'   # 오류 페이지
