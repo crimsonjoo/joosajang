@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from urllib.request import urlopen, Request
 import pandas as pd
+import matplotlib
+matplotlib.use('Agg')
 import numpy as np
 import FinanceDataReader as fdr
 import matplotlib.pyplot as plt
@@ -8,7 +10,8 @@ from datetime import datetime,timedelta
 from mpl_finance import candlestick_ohlc
 import mplfinance as mpf
 import matplotlib.dates as mdates
-# from django.http import HttpResponse
+import io
+import urllib, base64
 
 def index(request):
     return render(request,'test2/index.html')
@@ -128,10 +131,16 @@ def detail(request,idx):  #여기선 결과물이 idx 0: 볼린저추세추종, 
         plt.grid(True)
         plt.legend(loc='upper left')
 
-        plt.savefig('./test2/static/test2/photo0.jpg')
+        fig = plt.gcf()
+        buf = io.BytesIO()
+
+        fig.savefig(buf, format='png')
+        buf.seek(0)
+        string = base64.b64encode(buf.read())
+        uri = 'data:image/png;base64,' + urllib.parse.quote(string)
 
 
-        return render(request, 'test2/result0_2.html',{'start':start_date,'today':today_str,'code':code,'name':name,'returns':int(returns),'buy_list':buy_list,'sell_list':sell_list,})
+        return render(request, 'test2/result0_2.html',{'uri':uri,'start':start_date,'today':today_str,'code':code,'name':name,'returns':int(returns),'buy_list':buy_list,'sell_list':sell_list,})
     elif idx == 1:
         queryDict = dict(request.GET)
         code = queryDict['code'][0]
@@ -202,10 +211,16 @@ def detail(request,idx):  #여기선 결과물이 idx 0: 볼린저추세추종, 
                 plt.plot(df.index.values[i], 0, 'bv')  # ⑥
         plt.grid(True)
         plt.legend(loc='upper left')
-        plt.savefig('./test2/static/test2/photo1.jpg')
 
+        fig = plt.gcf()
+        buf = io.BytesIO()
 
-        return render(request, 'test2/result1_2.html',{'start':start_date,'today':today_str,'code':code,'name':name,'returns':int(returns),'buy_list':buy_list,'sell_list':sell_list})
+        fig.savefig(buf, format='png')
+        buf.seek(0)
+        string = base64.b64encode(buf.read())
+        uri = 'data:image/png;base64,' + urllib.parse.quote(string)
+
+        return render(request, 'test2/result1_2.html',{'uri':uri,'start':start_date,'today':today_str,'code':code,'name':name,'returns':int(returns),'buy_list':buy_list,'sell_list':sell_list})
     elif idx == 2:
         queryDict = dict(request.GET)
         code = queryDict['code'][0]
@@ -281,9 +296,16 @@ def detail(request,idx):  #여기선 결과물이 idx 0: 볼린저추세추종, 
         plt.plot(df.number, df['slow_d'], color='g', linestyle='solid', label='%D')
         plt.yticks([0, 20, 80, 100])
         plt.legend(loc='upper left')
-        plt.savefig('./test2/static/test2/photo2.jpg')
 
-        return render(request, 'test2/result2_2.html',{'start':start_date,'today':today_str,'code':code,'name':name,'returns':int(returns),'buy_list':buy_list,'sell_list':sell_list})
+        fig = plt.gcf()
+        buf = io.BytesIO()
+
+        fig.savefig(buf, format='png')
+        buf.seek(0)
+        string = base64.b64encode(buf.read())
+        uri = 'data:image/png;base64,' + urllib.parse.quote(string)
+
+        return render(request, 'test2/result2_2.html',{'uri':uri,'start':start_date,'today':today_str,'code':code,'name':name,'returns':int(returns),'buy_list':buy_list,'sell_list':sell_list})
     elif idx == 3:
         queryDict = dict(request.GET)
         code = queryDict['code'][0]
@@ -361,9 +383,16 @@ def detail(request,idx):  #여기선 결과물이 idx 0: 볼린저추세추종, 
         plt.plot(df.number, df['slow_d'], color='g', linestyle='solid', label='%D')
         plt.yticks([0, 20, 80, 100])
         plt.legend(loc='upper left')
-        plt.savefig('./test2/static/test2/photo3.jpg')
 
-        return render(request, 'test2/result3_2.html',{'start':start_date,'today':today_str,'code':code,'name':name,'returns':int(returns),'buy_list':buy_list,'sell_list':sell_list})
+        fig = plt.gcf()
+        buf = io.BytesIO()
+
+        fig.savefig(buf, format='png')
+        buf.seek(0)
+        string = base64.b64encode(buf.read())
+        uri = 'data:image/png;base64,' + urllib.parse.quote(string)
+
+        return render(request, 'test2/result3_2.html',{'uri':uri,'start':start_date,'today':today_str,'code':code,'name':name,'returns':int(returns),'buy_list':buy_list,'sell_list':sell_list})
     elif idx == 4:  # 골든&데드 크로스 (5&20)
         today = datetime.today()
         today_str = today.strftime("%Y-%m-%d")
@@ -426,8 +455,16 @@ def detail(request,idx):  #여기선 결과물이 idx 0: 볼린저추세추종, 
                     returns += ((cost / own_price) - 1) * 100
                     own_price = 0
         plt.legend(loc='upper left')
-        plt.savefig('./test2/static/test2/photo4.jpg')
-        return render(request, 'test2/result4_2.html',{'start': start_date, 'today': today_str, 'code': code, 'name': name, 'returns': int(returns),'buy_list': buy_list, 'sell_list': sell_list})
+
+        fig = plt.gcf()
+        buf = io.BytesIO()
+
+        fig.savefig(buf, format='png')
+        buf.seek(0)
+        string = base64.b64encode(buf.read())
+        uri = 'data:image/png;base64,' + urllib.parse.quote(string)
+
+        return render(request, 'test2/result4_2.html',{'uri':uri,'start': start_date, 'today': today_str, 'code': code, 'name': name, 'returns': int(returns),'buy_list': buy_list, 'sell_list': sell_list})
     elif idx == 5:  # 골든&데드 크로스 (20&60)
         today = datetime.today()
         today_str = today.strftime("%Y-%m-%d")
@@ -490,5 +527,13 @@ def detail(request,idx):  #여기선 결과물이 idx 0: 볼린저추세추종, 
                     returns += ((cost / own_price) - 1) * 100
                     own_price = 0
         plt.legend(loc='upper left')
-        plt.savefig('./test2/static/test2/photo5.jpg')
-        return render(request, 'test2/result5_2.html',{'start': start_date, 'today': today_str, 'code': code, 'name': name, 'returns': int(returns),'buy_list': buy_list, 'sell_list': sell_list})
+
+        fig = plt.gcf()
+        buf = io.BytesIO()
+
+        fig.savefig(buf, format='png')
+        buf.seek(0)
+        string = base64.b64encode(buf.read())
+        uri = 'data:image/png;base64,' + urllib.parse.quote(string)
+
+        return render(request, 'test2/result5_2.html',{'uri':uri,'start': start_date, 'today': today_str, 'code': code, 'name': name, 'returns': int(returns),'buy_list': buy_list, 'sell_list': sell_list})

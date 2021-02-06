@@ -3,12 +3,15 @@ from urllib.request import urlopen, Request
 import numpy as np
 import pandas as pd
 import FinanceDataReader as fdr
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from datetime import datetime,timedelta
 import mplfinance as mpf
 import matplotlib.dates as mdates
 from mpl_finance import candlestick_ohlc
-
+import io
+import urllib, base64
 # from django.http import HttpResponse
 
 
@@ -82,10 +85,17 @@ def detail(request,idx):  # 여기선 결과물이  idx 0 : 종목 분석 결과
         mc = mpf.make_marketcolors(up='r', down='b', inherit=True)
         s = mpf.make_mpf_style(marketcolors=mc)
 
-        mpf.plot(df, **kwargs, style=s, savefig='./test1/static/test1/photo0.jpg')
+        mpf.plot(df, **kwargs, style=s)
+        fig = plt.gcf()
+        buf = io.BytesIO()
+
+        fig.savefig(buf, format='png')
+        buf.seek(0)
+        string = base64.b64encode(buf.read())
+        uri = 'data:image/png;base64,' + urllib.parse.quote(string)
 
         return render(request, 'test1/result0_2.html',
-                      {'start': start_date, 'today': today_str, 'code': code, 'name': name,
+                      {'uri':uri,'start': start_date, 'today': today_str, 'code': code, 'name': name,
                        'returns': int(simple_return), 'CAGR': round(CAGR, 2), 'SHARPE': round(Sharpe, 2),
                        'VOL': round(VOL * 100, 2), 'MDD': round(-1 * MDD * 100, 2)})
     elif idx == 1: #  골든&데드 크로스 전략으로 분석한 결과
@@ -150,8 +160,16 @@ def detail(request,idx):  # 여기선 결과물이  idx 0 : 종목 분석 결과
                     returns += ((cost / own_price) - 1) * 100
                     own_price = 0
         plt.legend(loc='upper left')
-        plt.savefig('./test1/static/test1/photo1.jpg')
-        return render(request, 'test1/result1_2.html', {'start':start_date,'today':today_str,'code':code,'name':name,'returns':int(returns),'buy_list':buy_list,'sell_list':sell_list})
+
+        fig = plt.gcf()
+        buf = io.BytesIO()
+
+        fig.savefig(buf, format='png')
+        buf.seek(0)
+        string = base64.b64encode(buf.read())
+        uri = 'data:image/png;base64,' + urllib.parse.quote(string)
+
+        return render(request, 'test1/result1_2.html', {'uri':uri,'start':start_date,'today':today_str,'code':code,'name':name,'returns':int(returns),'buy_list':buy_list,'sell_list':sell_list})
     elif idx == 2:  #마법공식
         def get_html_fnguide(ticker, gb):
             """
@@ -286,7 +304,14 @@ def detail(request,idx):  # 여기선 결과물이  idx 0 : 종목 분석 결과
         plt.scatter(x=min_risk['Risk'], y=min_risk['Returns'], c='r', marker='o', s=200)
         plt.xlabel('Risk')
         plt.ylabel('Expected Returns')
-        plt.savefig('./test1/static/test1/montekarlo0.jpg')
+
+        fig = plt.gcf()
+        buf = io.BytesIO()
+
+        fig.savefig(buf, format='png')
+        buf.seek(0)
+        string = base64.b64encode(buf.read())
+        uri = 'data:image/png;base64,' + urllib.parse.quote(string)
 
         table = mf_df.values.tolist()
         names = name_list.tolist()
@@ -315,7 +340,7 @@ def detail(request,idx):  # 여기선 결과물이  idx 0 : 종목 분석 결과
         # max_sharpe = list(zip(codes,names,max_sharpe))
         # min_risk = list(zip(codes,names, min_risk))
 
-        return render(request, 'test1/result2_2.html',{'table':table,'max_sharpe':max_sharpe,'min_risk':min_risk,'names':names,'today':today_str})
+        return render(request, 'test1/result2_2.html',{'uri':uri,'table':table,'max_sharpe':max_sharpe,'min_risk':min_risk,'names':names,'today':today_str})
     elif idx == 3:  #듀얼모멘텀
         ###########################날짜###############################
         today = datetime.today()
@@ -417,7 +442,16 @@ def detail(request,idx):  # 여기선 결과물이  idx 0 : 종목 분석 결과
         plt.scatter(x=min_risk['Risk'], y=min_risk['Returns'], c='r', marker='o', s=200)
         plt.xlabel('Risk')
         plt.ylabel('Expected Returns')
-        plt.savefig('./test1/static/test1/montekarlo1.jpg')
+
+        fig = plt.gcf()
+        buf = io.BytesIO()
+
+        fig.savefig(buf, format='png')
+        buf.seek(0)
+        string = base64.b64encode(buf.read())
+        uri = 'data:image/png;base64,' + urllib.parse.quote(string)
+
+
         # 전달 해야할 것들 : final_df, max_sharpe , min_risk , today_str
 
         table=final_df.values.tolist()
@@ -447,4 +481,4 @@ def detail(request,idx):  # 여기선 결과물이  idx 0 : 종목 분석 결과
         # max_sharpe = list(zip(codes,names,max_sharpe))
         # min_risk = list(zip(codes,names, min_risk))
 
-        return render(request, 'test1/result3_2.html',{'table':table,'max_sharpe':max_sharpe,'min_risk':min_risk,'names':names,'today':today_str})
+        return render(request, 'test1/result3_2.html',{'uri':uri,'table':table,'max_sharpe':max_sharpe,'min_risk':min_risk,'names':names,'today':today_str})
