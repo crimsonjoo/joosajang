@@ -74,11 +74,11 @@ def detail(request,idx):  # 여기선 결과물이  idx 0 : 종목 분석 결과
         VOL = np.std(price_df['Change']) * np.sqrt(252.)
         Sharpe = np.mean(price_df['Change']) / np.std(price_df['Change']) * np.sqrt(252.)
 
-        print('returns :', simple_return, '%')
-        print('CAGR :', round(CAGR, 2), '%')
-        print('Sharpe :', round(Sharpe, 2))
-        print('VOL :', round(VOL * 100, 2), '%')
-        print('MDD :', round(-1 * MDD * 100, 2), '%')
+        # print('returns :', simple_return, '%')
+        # print('CAGR :', round(CAGR, 2), '%')
+        # print('Sharpe :', round(Sharpe, 2))
+        # print('VOL :', round(VOL * 100, 2), '%')
+        # print('MDD :', round(-1 * MDD * 100, 2), '%')
 
         df = price_df[['Open', 'High', 'Low', 'Close', 'Volume']]
         kwargs = dict(type='candle', volume=True)
