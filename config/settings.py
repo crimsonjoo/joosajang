@@ -26,7 +26,7 @@ SECRET_KEY = '@7bt$a=^(@+#$a8fxij#7jpax$x)f=n1gl_u(j0^*438jx)qk#'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True  # 개발모드 : True , 배포모드 : False
 
-ALLOWED_HOSTS = ['crimsonjoo.pythonanywhere.com']   # 개발모드 : [] , 배포모드 : ['localhost']
+ALLOWED_HOSTS = ['crimsonjoo.pythonanywhere.com','*']   # 개발모드 : [] , 배포모드 : ['localhost']
 
 
 # Application definition

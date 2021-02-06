@@ -1,10 +1,15 @@
 from django.shortcuts import render
 import pandas as pd
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from datetime import datetime,timedelta
 import numpy as np
 import mplfinance as mpf
 import FinanceDataReader as fdr
+import io
+import urllib, base64
+
 
 def index(request):
     return render(request,'test3/index.html')
@@ -40,19 +45,24 @@ def detail(request):
     VOL = np.std(price_df['Change']) * np.sqrt(252.)
     Sharpe = np.mean(price_df['Change']) / np.std(price_df['Change']) * np.sqrt(252.)
 
-    print('returns :', simple_return, '%')
-    print('CAGR :', round(CAGR, 2), '%')
-    print('Sharpe :', round(Sharpe, 2))
-    print('VOL :', round(VOL * 100, 2), '%')
-    print('MDD :', round(-1 * MDD * 100, 2), '%')
+    # print('returns :', simple_return, '%')
+    # print('CAGR :', round(CAGR, 2), '%')
+    # print('Sharpe :', round(Sharpe, 2))
+    # print('VOL :', round(VOL * 100, 2), '%')
+    # print('MDD :', round(-1 * MDD * 100, 2), '%')
 
     df = price_df[['Open', 'High', 'Low', 'Close', 'Volume']]
     kwargs = dict(type='candle', volume=True)
     mc = mpf.make_marketcolors(up='r', down='b', inherit=True)
     s = mpf.make_mpf_style(marketcolors=mc)
 
-    mpf.plot(df, **kwargs, style=s, savefig='./test3/static/test3/photo0.jpg')
-    # mpf.plot(df, **kwargs, style=s, savefig='./test3/static/test3/photo/photo'+photo_str+'.jpg')
-    # loc = '../../static/test3/photo/photo'+photo_str+'.jpg'
+    mpf.plot(df, **kwargs, style=s)
+    fig = plt.gcf()
+    buf = io.BytesIO()
 
-    return render(request, 'test3/detail.html',{'start':start_date,'today':today_str,'code':code,'name':name,'returns':int(simple_return),'CAGR':round(CAGR, 2),'SHARPE':round(Sharpe, 2),'VOL':round(VOL * 100, 2),'MDD':round(-1 * MDD * 100, 2)})
+    fig.savefig(buf,format='png')
+    buf.seek(0)
+    string = base64.b64encode(buf.read())
+    uri = 'data:image/png;base64,' + urllib.parse.quote(string)
+
+    return render(request, 'test3/detail.html',{'uri':uri,'start':start_date,'today':today_str,'code':code,'name':name,'returns':int(simple_return),'CAGR':round(CAGR, 2),'SHARPE':round(Sharpe, 2),'VOL':round(VOL * 100, 2),'MDD':round(-1 * MDD * 100, 2)})
