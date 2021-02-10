@@ -48,15 +48,17 @@ def result(request,num):
     elif num == 5:
         return render(request, 'test2/result5.html')
 
-def detail(request,idx):  #여기선 결과물이 idx 0: 볼린저추세추종, 1:볼린저반전 ,2:삼중창(ema) ,3:삼중창(macd)를 의미한다.
+def detail(request,idx):  #여기선 결과물이 idx 0: 볼린저추세추종, 1:볼린저반전 ,2:삼중창(ema) ,3:삼중창(macd) , 4:골든&데드(5/20) ,5:골든&데드(20/60)를 의미한다.
     today = datetime.today()
     today_str = today.strftime("%Y-%m-%d")
     if idx == 0:
         queryDict=dict(request.GET)
         code = queryDict['code'][0]
         start_date = queryDict['date'][0]
+        if start_date[4] != '-':
+            start_date = str(start_date[:4]) + '-' + str(start_date[4:6]) + '-' + str(start_date[6:])
+
         df = fdr.DataReader(code,start_date)
-        start_date = str(start_date[:4]) + '-' + str(start_date[4:6]) + '-' + str(start_date[6:])
         name_df = fdr.StockListing('KRX')
         name = name_df.loc[name_df['Symbol']==code,'Name'].values[0]
 
@@ -145,8 +147,10 @@ def detail(request,idx):  #여기선 결과물이 idx 0: 볼린저추세추종, 
         queryDict = dict(request.GET)
         code = queryDict['code'][0]
         start_date = queryDict['date'][0]
+        if start_date[4] != '-':
+            start_date = str(start_date[:4]) + '-' + str(start_date[4:6]) + '-' + str(start_date[6:])
+
         df = fdr.DataReader(code, start_date)
-        start_date = str(start_date[:4]) + '-' + str(start_date[4:6]) + '-' + str(start_date[6:])
         name_df = fdr.StockListing('KRX')
         name = name_df.loc[name_df['Symbol'] == code, 'Name'].values[0]
 
@@ -225,8 +229,10 @@ def detail(request,idx):  #여기선 결과물이 idx 0: 볼린저추세추종, 
         queryDict = dict(request.GET)
         code = queryDict['code'][0]
         start_date = queryDict['date'][0]
+        if start_date[4] != '-':
+            start_date = str(start_date[:4]) + '-' + str(start_date[4:6]) + '-' + str(start_date[6:])
+
         df = fdr.DataReader(code, start_date)
-        start_date = str(start_date[:4]) + '-' + str(start_date[4:6]) + '-' + str(start_date[6:])
         name_df = fdr.StockListing('KRX')
         name = name_df.loc[name_df['Symbol'] == code, 'Name'].values[0]
 
@@ -310,8 +316,10 @@ def detail(request,idx):  #여기선 결과물이 idx 0: 볼린저추세추종, 
         queryDict = dict(request.GET)
         code = queryDict['code'][0]
         start_date = queryDict['date'][0]
+        if start_date[4] != '-':
+            start_date = str(start_date[:4]) + '-' + str(start_date[4:6]) + '-' + str(start_date[6:])
+
         df = fdr.DataReader(code, start_date)
-        start_date = str(start_date[:4]) + '-' + str(start_date[4:6]) + '-' + str(start_date[6:])
         name_df = fdr.StockListing('KRX')
         name = name_df.loc[name_df['Symbol'] == code, 'Name'].values[0]
 
@@ -400,10 +408,12 @@ def detail(request,idx):  #여기선 결과물이 idx 0: 볼린저추세추종, 
         code = queryDict['code'][0]
         start_date = queryDict['date'][0]
 
+        if start_date[4] != '-':
+            start_date = str(start_date[:4]) + '-' + str(start_date[4:6]) + '-' + str(start_date[6:])
+
         price_df = fdr.DataReader(code, start_date)
         price_df = price_df.dropna()
 
-        start_date = str(start_date[:4]) + '-' + str(start_date[4:6]) + '-' + str(start_date[6:])
         name_df = fdr.StockListing('KRX')
         name = name_df.loc[name_df['Symbol'] == code, 'Name'].values[0]
 
@@ -472,10 +482,12 @@ def detail(request,idx):  #여기선 결과물이 idx 0: 볼린저추세추종, 
         code = queryDict['code'][0]
         start_date = queryDict['date'][0]
 
+        if start_date[4] != '-':
+            start_date = str(start_date[:4]) + '-' + str(start_date[4:6]) + '-' + str(start_date[6:])
+
         price_df = fdr.DataReader(code, start_date)
         price_df = price_df.dropna()
 
-        start_date = str(start_date[:4]) + '-' + str(start_date[4:6]) + '-' + str(start_date[6:])
         name_df = fdr.StockListing('KRX')
         name = name_df.loc[name_df['Symbol'] == code, 'Name'].values[0]
 

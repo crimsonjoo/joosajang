@@ -4,7 +4,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <link rel="stylesheet" type="text/css" href="{% static 'test1/style_blank14.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'test2/style_blank4.css' %}">
     <link rel="icon" href="{% static 'main/favicon.ico' %}">
   <script type="text/javascript" src="/static/main/cat.js"></script>
   <title>주사장의 보고서</title>
@@ -12,31 +12,32 @@
 
 <body>
 
-    <h1 class="title2">종목 분석 보고서</h1>
+    <h1 class="title2">주가 예측 보고서</h1>
 
     <h1 class="img_caption">{{name}} ({{code}})</h1>
+
     <div class="img_box">
-        <img src={{uri}}>
+        <img src= {{uri}}>
     </div>
 
     <div class="table_box">
         <table>
           <thead>
             <tr>
-              <th scope="col">단순 수익률(%)</th>
-              <th scope="col">연평균 복리 수익률(%)</th>
-              <th scope="col">최대 낙폭(%)</th>
-              <th scope="col">변동성(%)</th>
-              <th scope="col">샤프 지수</th>
+              <th scope="col">금일</th>
+              <th scope="col">금일 종가(원)</th>
+              <th scope="col">예측일</th>
+              <th scope="col">예측일 종가(원)</th>
+              <th scope="col">예측가 변동률(%)</th>
             </tr>
           </thead>
               <tbody>
                 <tr>
-                    <td data-label="Account">{{returns}}</td>
-                    <td data-label="Due Date">{{CAGR}}</td>
-                    <td data-label="Amount">{{MDD}}</td>
-                    <td data-label="Period">{{VOL}}</td>
-                    <td data-label="Period">{{SHARPE}}</td>
+                    <td data-label="Account">{{today}}</td>
+                    <td data-label="Due Date">{{today_price}}</td>
+                    <td data-label="Amount">{{tomorrow}}</td>
+                    <td data-label="Period">{{tomorrow_price}}</td>
+                    <td data-label="Period">{{tomorrow_error}}</td>
                 </tr>
               </tbody>
         </table>
@@ -44,14 +45,7 @@
     <div class="big-bubble">
         <div class="align-text-box">
             <div class="text-box">
-                <h1 class="start_higlight_conent">단순 수익률 : 해당 종목의 투자 기간({{start}} ~ {{today}}) 발생한 수익률 입니다.</h1>
-            </div>
-
-            <div class="text-box">
-                <h1 class="content"></h1>
-            </div>
-            <div class="text-box">
-                <h1 class="start_higlight_conent">연평균 복리 수익률 : 장기투자의 수익률을 평가할 때 반드시 연평균 증가율을 확인 해야합니다.</h1>
+                <h1 class="start_higlight_conent">최적화기 : Adam (Adaptive Moment estimation)</h1>
             </div>
 
             <div class="text-box">
@@ -59,7 +53,7 @@
             </div>
 
             <div class="text-box">
-                <h1 class="start_higlight_conent">최대 낙폭 : 해당 종목의 투자자가 겪을 수 있는 최대 고통을 측정하는 지수이며 낮을수록 좋습니다.</h1>
+                <h1 class="start_higlight_conent">손실 함수 : 평균 제곱 오차 (MSE,Mean Squared Error)</h1>
             </div>
 
             <div class="text-box">
@@ -67,23 +61,30 @@
             </div>
 
             <div class="text-box">
-                <h1 class="start_higlight_conent">변동성 : 수익률의 표준 편차로 계산하며 이 수치가 낮을수록 흐름이 안정적이라는 의미입니다.</h1>
+                <h1 class="start_higlight_conent">훈련 손실값 (loss) : 학습할수록 낮아지지만, 너무 낮아지면 과적합의 위험이 있습니다.</h1>
             </div>
 
             <div class="text-box">
                 <h1 class="content"></h1>
             </div>
+
             <div class="text-box">
-                <h1 class="start_higlight_conent">샤프 지수 : 위험 대비 수익성을 표현하며 보통 1 이상만 되어도 충분하다고 판단합니다.</h1>
+                <h1 class="start_higlight_conent">검증 손실값 (val_loss) : 실제값과 검증 데이터의 오차를 의미하며 낮을수록 좋습니다.</h1>
             </div>
         </div>
     </div>
 
     <div class="big-bubble">
-        <h1 class="tip"> </h1>
+        <h1 class="tip">주사장's TIP</h1>
         <div class="align-text-box">
             <div class="tip-box">
-                <h1 class="tip_highlight_start_content">투자시 발생하는 수익과 손실은 모두 투자자 본인에게 귀속됩니다. 투자 판단에 대한 최종적인 책임과 결정은 본인에게 있음을 명심하세요.</h1>
+                <h1 class="tip_content">흔히들 주가는 절대 예측 할 수 없다고 합니다. 저 역시 그 말에 어느 정도 동의합니다. 그럼에도 불구하고 '인간에게는 불가능하지만, 기계라면 가능하지 않을까?'라는</h1>
+            </div>
+            <div class="tip-box">
+                <h1 class="tip_content">호기심과 맹목적인 믿음에서 인공지능 주가 예측 프로그램을 제작하게 되었습니다. 더욱이 금융 분야에서의 딥러닝과 인공지능의 역할은 나날이 커져가고 있습니다.</h1>
+            </div>
+            <div class="tip-box">
+                <h1 class="tip_highlight_start_content">하지만 아무리 인공지능이 발달하고 높은 정확도로 미래를 예측하더라도 최종적인 판단을 내려야 하는 주체는 본인임을 명심하세요.</h1>
             </div>
         </div>
     </div>
@@ -92,7 +93,7 @@
 
     <div class="btn_idx_group">
         <div class="btn-group test">
-          <a href="{% url 'test1:result' num=0 %}" class="btn btn-info">
+          <a href="{% url 'test4:result_predict' num=2 %}" class="btn btn-info">
             <button>
               <h1 class="btn">재설정하기</h1>
             </button>

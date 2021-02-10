@@ -4,23 +4,24 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <link rel="stylesheet" type="text/css" href="{% static 'test2/style_blank4.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'test1/style_blank14.css' %}">
     <link rel="icon" href="{% static 'main/favicon.ico' %}">
   <script type="text/javascript" src="/static/main/cat.js"></script>
-  <title>딥러닝 금융 실험실</title>
+  <title>결과 보고서 예시</title>
 </head>
 
 <body>
-    <div class="subtite">
-        <h1 class="subtext2">금융 데이터 분석에 딥러닝을 활용해</h1>
-        <h1 class="subtext2">주가를 예측하고 종목을 분류해보세요!</h1>
+    <div class="img_box">
+        <img src="{% static "test1/payment1_photo.png" %}">
     </div>
-
+    <div class="subtite">
+        <h1 class="subtext2">위 형식의 보고서를 이메일로 보내드립니다.</h1>
+    </div>
     <div class="btn_idx_group">
         <div class="btn-group test">
-          <a href="{% url 'test4:question' %}" class="btn btn-info">
+          <a href="{% url 'test1:payment' idx=1%}" class="btn btn-info">
             <button>
-              <h1 class="btn">시작하기</h1>
+              <h1 class="btn">돌아가기</h1>
             </button>
           </a>
         </div>

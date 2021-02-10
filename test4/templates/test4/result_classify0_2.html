@@ -4,7 +4,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <link rel="stylesheet" type="text/css" href="{% static 'test1/style_blank14.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'test2/style_blank4.css' %}">
     <link rel="icon" href="{% static 'main/favicon.ico' %}">
   <script type="text/javascript" src="/static/main/cat.js"></script>
   <title>주사장의 보고서</title>
@@ -12,31 +12,32 @@
 
 <body>
 
-    <h1 class="title2">종목 분석 보고서</h1>
+    <h1 class="title2">종목 상관관계 보고서</h1>
 
-    <h1 class="img_caption">{{name}} ({{code}})</h1>
+    <h1 class="img_caption">{{name1}}({{code1}}) & {{name2}}({{code2}})</h1>
+
     <div class="img_box">
-        <img src={{uri}}>
+        <img src= {{uri}}>
     </div>
 
     <div class="table_box">
         <table>
           <thead>
             <tr>
-              <th scope="col">단순 수익률(%)</th>
-              <th scope="col">연평균 복리 수익률(%)</th>
-              <th scope="col">최대 낙폭(%)</th>
-              <th scope="col">변동성(%)</th>
-              <th scope="col">샤프 지수</th>
+              <th scope="col">조회 시작일</th>
+              <th scope="col">조회 종료일</th>
+                <th scope="col">선형 회귀식</th>
+              <th scope="col">결정계수</th>
+                <th scope="col">상관계수</th>
             </tr>
           </thead>
               <tbody>
                 <tr>
-                    <td data-label="Account">{{returns}}</td>
-                    <td data-label="Due Date">{{CAGR}}</td>
-                    <td data-label="Amount">{{MDD}}</td>
-                    <td data-label="Period">{{VOL}}</td>
-                    <td data-label="Period">{{SHARPE}}</td>
+                    <td data-label="Account">{{start}}</td>
+                    <td data-label="Due Date">{{today}}</td>
+                    <td data-label="Period">{{line}}</td>
+                    <td data-label="Period">{{corr_squar}}</td>
+                    <td data-label="Amount">{{corr}}</td>
                 </tr>
               </tbody>
         </table>
@@ -44,14 +45,7 @@
     <div class="big-bubble">
         <div class="align-text-box">
             <div class="text-box">
-                <h1 class="start_higlight_conent">단순 수익률 : 해당 종목의 투자 기간({{start}} ~ {{today}}) 발생한 수익률 입니다.</h1>
-            </div>
-
-            <div class="text-box">
-                <h1 class="content"></h1>
-            </div>
-            <div class="text-box">
-                <h1 class="start_higlight_conent">연평균 복리 수익률 : 장기투자의 수익률을 평가할 때 반드시 연평균 증가율을 확인 해야합니다.</h1>
+                <h1 class="start_higlight_conent">선형 회귀식 : 통계학에서 두 데이터 간의 상관관계를 분석할때 사용되는 모델입니다.</h1>
             </div>
 
             <div class="text-box">
@@ -59,7 +53,7 @@
             </div>
 
             <div class="text-box">
-                <h1 class="start_higlight_conent">최대 낙폭 : 해당 종목의 투자자가 겪을 수 있는 최대 고통을 측정하는 지수이며 낮을수록 좋습니다.</h1>
+                <h1 class="start_higlight_conent">결정계수 : 회귀식이 얼마나 정확한지 나타내며 [0,1] 범위 안에 존재하는 수치입니다.</h1>
             </div>
 
             <div class="text-box">
@@ -67,23 +61,36 @@
             </div>
 
             <div class="text-box">
-                <h1 class="start_higlight_conent">변동성 : 수익률의 표준 편차로 계산하며 이 수치가 낮을수록 흐름이 안정적이라는 의미입니다.</h1>
+                <h1 class="start_higlight_conent">상관계수 : 데이터간 상관관계를 설명하며 [-1,1] 범위 안에 존재하는 수치입니다.</h1>
             </div>
 
             <div class="text-box">
                 <h1 class="content"></h1>
             </div>
             <div class="text-box">
-                <h1 class="start_higlight_conent">샤프 지수 : 위험 대비 수익성을 표현하며 보통 1 이상만 되어도 충분하다고 판단합니다.</h1>
+                <h1 class="content"></h1>
+            </div>
+            <div class="text-box">
+                <h1 class="content"></h1>
+            </div>
+            <div class="text-box">
+                <h1 class="content"></h1>
+            </div>
+
+            <div class="text-box">
+                <h1 class="start_higlight_conent">결정계수가 높을수록 모델 신뢰도가 높고, 상관계수가 낮을수록 손실 위험을 완화합니다.</h1>
+            </div>
+            <div class="text-box">
+                <h1 class="start_higlight_conent">상관계수가 음수이거나 0에 근접한다면 헤지 전략(hedge)을 고려해볼 수 있습니다.</h1>
             </div>
         </div>
     </div>
 
     <div class="big-bubble">
-        <h1 class="tip"> </h1>
+        <h1 class="tip">주사장's TIP</h1>
         <div class="align-text-box">
             <div class="tip-box">
-                <h1 class="tip_highlight_start_content">투자시 발생하는 수익과 손실은 모두 투자자 본인에게 귀속됩니다. 투자 판단에 대한 최종적인 책임과 결정은 본인에게 있음을 명심하세요.</h1>
+                <h1 class="tip_highlight_start_content">상관관계가 낮은 자산들에 분산투자해 포트폴리오의 손실 위험을 줄이는 것을 헤지 전략(hedge)이라 일컫습니다.</h1>
             </div>
         </div>
     </div>
@@ -92,7 +99,7 @@
 
     <div class="btn_idx_group">
         <div class="btn-group test">
-          <a href="{% url 'test1:result' num=0 %}" class="btn btn-info">
+          <a href="{% url 'test4:result_classify' num=0 %}" class="btn btn-info">
             <button>
               <h1 class="btn">재설정하기</h1>
             </button>

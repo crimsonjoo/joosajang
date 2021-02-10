@@ -22,6 +22,18 @@ def index(request):
 def index2(request):
     return render(request,'test1/index2.html')
 
+def payment(request,idx):
+    if idx == 0:  # 마법공식의 결제 안내문구
+        return render(request,'test1/payment0.html')
+    if idx == 1:  # 듀얼 모멘텀의 결제 안내문구
+        return render(request,'test1/payment1.html')
+
+def payment_detail(request,idx):
+    if idx == 0:
+        return render(request,'test1/payment0_detail.html')
+    if idx == 1:
+        return render(request,'test1/payment1_detail.html')
+
 def question1(request):
     return render(request,'test1/question1.html')
 
@@ -54,11 +66,11 @@ def detail(request,idx):  # 여기선 결과물이  idx 0 : 종목 분석 결과
         queryDict = dict(request.GET)
         code = queryDict['code'][0]
         start_date = queryDict['date'][0]
+        if start_date[4] != '-':
+            start_date = str(start_date[:4]) + '-' + str(start_date[4:6]) + '-' + str(start_date[6:])
 
         price_df = fdr.DataReader(code, start_date)
         price_df = price_df.dropna()
-
-        start_date = str(start_date[:4]) + '-' + str(start_date[4:6]) + '-' + str(start_date[6:])
         name_df = fdr.StockListing('KRX')
         name = name_df.loc[name_df['Symbol'] == code, 'Name'].values[0]
 
@@ -69,7 +81,7 @@ def detail(request,idx):  # 여기선 결과물이  idx 0 : 종목 분석 결과
         historical_dd = daily_drawdown.cummin()  ## 최대 낙폭
 
         MDD = historical_dd.min()
-        simple_return = (price_df['st_rtn'].values[-1] * 100)
+        simple_return = ((price_df['st_rtn'].values[-1]-1) * 100)
         CAGR = simple_return ** (252. / len(price_df.index)) - 1  # 연평균 복리 수익률
         VOL = np.std(price_df['Change']) * np.sqrt(252.)
         Sharpe = np.mean(price_df['Change']) / np.std(price_df['Change']) * np.sqrt(252.)
@@ -104,11 +116,12 @@ def detail(request,idx):  # 여기선 결과물이  idx 0 : 종목 분석 결과
         queryDict = dict(request.GET)
         code = queryDict['code'][0]
         start_date = queryDict['date'][0]
+        if start_date[4] != '-':
+            start_date = str(start_date[:4]) + '-' + str(start_date[4:6]) + '-' + str(start_date[6:])
 
         price_df = fdr.DataReader(code, start_date)
         price_df = price_df.dropna()
 
-        start_date = str(start_date[:4]) + '-' + str(start_date[4:6]) + '-' + str(start_date[6:])
         name_df = fdr.StockListing('KRX')
         name = name_df.loc[name_df['Symbol'] == code, 'Name'].values[0]
 
@@ -221,6 +234,7 @@ def detail(request,idx):  # 여기선 결과물이  idx 0 : 종목 분석 결과
             s_value_mask_rank = s_value_mask.rank(ascending=asc, na_option="bottom")
 
             return s_value_mask_rank
+        ### 조회할 대상을 바꾸려면 total_list 의 대상을 KOSPI,KOSDAQ,KRX 중 선택해 바꾼다
         ###########################날짜###############################
         today = datetime.today()
         today_str = today.strftime("%Y-%m-%d")
@@ -243,7 +257,7 @@ def detail(request,idx):  # 여기선 결과물이  idx 0 : 종목 분석 결과
                 # old_price = df['Close'].values[0]
                 current_price = df['Close'].values[-1]
                 returns = (df['Change'] + 1).cumprod()
-                returns = int(returns.values[-1] * 100)
+                returns = int((returns.values[-1]-1) * 100)
                 rows.append([code, company, current_price, profit, returns, roa, per])
             except:
                 continue
@@ -342,6 +356,7 @@ def detail(request,idx):  # 여기선 결과물이  idx 0 : 종목 분석 결과
 
         return render(request, 'test1/result2_2.html',{'uri':uri,'table':table,'max_sharpe':max_sharpe,'min_risk':min_risk,'names':names,'today':today_str})
     elif idx == 3:  #듀얼모멘텀
+        ### 조회할 대상을 바꾸려면 total_list 의 대상을 KOSPI,KOSDAQ,KRX 중 선택해 바꾼다
         ###########################날짜###############################
         today = datetime.today()
         today_str = today.strftime("%Y-%m-%d")
@@ -361,14 +376,14 @@ def detail(request,idx):  # 여기선 결과물이  idx 0 : 종목 분석 결과
         rows = []
         columns = ['code', 'company', 'old_price', 'new_price', 'returns']
         for code, company in zip(stock_code_list, stock_name_list):
-            df = fdr.DataReader(code, before120_str, before60_str)
-            df = df.dropna()
             try:
+                df = fdr.DataReader(code, before120_str, before60_str)
+                df = df.dropna()
                 old_price = df['Close'].values[0]
                 new_price = df['Close'].values[-1]
                 # df['daily_rtn']=df['Close'].pct_change()
                 returns = (df['Change'] + 1).cumprod()
-                returns = returns.values[-1] * 100
+                returns = (returns.values[-1]-1) * 100
                 rows.append([code, company, old_price, new_price, returns])
             except:
                 continue
@@ -390,7 +405,7 @@ def detail(request,idx):  # 여기선 결과물이  idx 0 : 종목 분석 결과
                 old_price = format(old_price,',d')
                 new_price = format(new_price,',d')
                 returns = (df['Change'] + 1).cumprod()
-                returns = int(returns.values[-1] * 100)
+                returns = int((returns.values[-1]-1) * 100)
                 second_rows.append([code, company, old_price, new_price, returns])
             except:
                 continue

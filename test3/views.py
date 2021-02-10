@@ -25,11 +25,11 @@ def detail(request):
     queryDict = dict(request.GET)
     code = queryDict['code'][0]
     start_date = queryDict['date'][0]
+    if start_date[4] != '-':
+        start_date = str(start_date[:4]) + '-' + str(start_date[4:6]) + '-' + str(start_date[6:])
 
     price_df = fdr.DataReader(code, start_date)
     price_df = price_df.dropna()
-
-    start_date = str(start_date[:4]) + '-' + str(start_date[4:6]) + '-' + str(start_date[6:])
     name_df = fdr.StockListing('KRX')
     name = name_df.loc[name_df['Symbol'] == code, 'Name'].values[0]
 
@@ -40,7 +40,7 @@ def detail(request):
     historical_dd = daily_drawdown.cummin()  ## 최대 낙폭
 
     MDD = historical_dd.min()
-    simple_return = (price_df['st_rtn'].values[-1] * 100)
+    simple_return = ((price_df['st_rtn'].values[-1]-1) * 100)
     CAGR = simple_return ** (252. / len(price_df.index)) - 1  # 연평균 복리 수익률
     VOL = np.std(price_df['Change']) * np.sqrt(252.)
     Sharpe = np.mean(price_df['Change']) / np.std(price_df['Change']) * np.sqrt(252.)

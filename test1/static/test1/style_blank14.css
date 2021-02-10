@@ -68,7 +68,7 @@ body {
 }
 .content {
     color:white;
-    font-size: 1.7rem;
+    font-size: 1.2rem;
     text-align : left;
     margin-top: 1rem;
 }
@@ -81,26 +81,26 @@ body {
 }
 
 .higlight_conent {
-    font-size: 1.7rem;
+    font-size: 1.2rem;
     margin-top: 1rem;
-    padding-left : 0.7rem;
+    padding-left : 0.4rem;
 }
 
 .start_higlight_conent {
-    font-size: 1.7rem;
+    font-size: 1.2rem;
     margin-top: 1rem;
 }
 
 .content_tail {
     color:white;
-    font-size: 1.7rem;
+    font-size: 1.2rem;
     margin-top: 1rem;
 }
 
 .content_space_tail {
     color:white;
-    font-size: 1.7rem;
-    padding-left : 0.7rem;
+    font-size: 1.2rem;
+    padding-left : 0.4rem;
     margin-top: 1rem;
 }
 
