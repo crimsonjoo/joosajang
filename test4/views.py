@@ -14,7 +14,6 @@ import urllib, base64
 # from keras.layers import LSTM,Dropout,Dense,Activation
 from scipy import stats
 from sklearn.preprocessing import Normalizer
-from sklearn.preprocessing import MinMaxScaler
 from sklearn.cluster import KMeans
 
 
