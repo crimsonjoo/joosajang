@@ -9,7 +9,7 @@ import mplfinance as mpf
 import FinanceDataReader as fdr
 import io
 import urllib, base64
-import stocker
+# import stocker
 from keras.models import Sequential
 from keras.layers import LSTM,Dropout,Dense,Activation
 from scipy import stats
@@ -45,123 +45,123 @@ def detail_predict(request,idx):  # 예측 카테고리의 최종 결과값
     elif idx == 1:
         return render(request, 'test4/result_predict1_2.html')
     elif idx ==2:
-        today = datetime.today()
-        today_str = today.strftime("%Y-%m-%d")
-        ##########################날짜###########################
-        ##########################################################
-        queryDict = dict(request.GET)
-        code = queryDict['code'][0]
-        df = fdr.DataReader(code)
-        dataset = df.dropna()
-        name_df = fdr.StockListing('KRX')
-        tag = ''
-        if code in name_df['Symbol'].values:
-            name = name_df.loc[name_df['Symbol'] == code, 'Name'].values[0]
-            tag = '.KS'
-        tomorrow_data = stocker.predict.tomorrow(code + tag)
-        tomorrow_price = tomorrow_data[0]
-        tomorrow_error = tomorrow_data[1]
-        tomorrow_date = tomorrow_data[2]
-
-        ##########################################################
-        ##########################################################
-        close_prices = dataset['Close'].values
-        seq_len = 50
-        sequence_length = seq_len + 1
-
-        result = []
-        for index in range(len(close_prices) - sequence_length):
-            result.append(close_prices[index: index + sequence_length])
-
-        normalized_data = []
-        window_mean = []
-        window_std = []
-
-        for window in result:
-            normalized_window = [((p - np.mean(window)) / np.std(window)) for p in window]
-            normalized_data.append(normalized_window)
-            window_mean.append(np.mean(window))
-            window_std.append(np.std(window))
-
-        result = np.array(normalized_data)
-
-        # split train and test data
-        row = int(round(result.shape[0] * 0.9))
-        train = result[:row, :]
-        # shuffle을 해도, 51개의 묶음은 변하지 않으므로 상관없음
-        # 50일(x)로 1일(y) 예측
-        np.random.shuffle(train)
-
-        x_train = train[:, :-1]
-        x_train = np.reshape(x_train, (x_train.shape[0], x_train.shape[1], 1))
-        y_train = train[:, -1]
-
-        x_test = result[row:, :-1]
-        x_test = np.reshape(x_test, (x_test.shape[0], x_test.shape[1], 1))
-        y_test = result[row:, -1]
-
-        model = Sequential()
-
-        model.add(LSTM(20, return_sequences=True, input_shape=(50, 1)))
-        model.add(Dropout(0.5))
-        model.add(LSTM(20, return_sequences=False))
-        model.add(Dense(1, activation='linear'))
-        model.compile(loss='mse', optimizer='adam')
-        hist = model.fit(x_train, y_train, validation_data=(x_test, y_test), batch_size=64, epochs=10)
-
-        lt = close_prices[-365:]
-        seq_len = 50
-        sequence_length = seq_len + 1
-
-        result = []
-        for index in range(len(lt) - sequence_length):
-            result.append(lt[index: index + sequence_length])
-        normalized_data = []
-        window_mean = []
-        window_std = []
-
-        for window in result:
-            normalized_window = [((p - np.mean(window)) / np.std(window)) for p in window]
-            normalized_data.append(normalized_window)
-            window_mean.append(np.mean(window))
-            window_std.append(np.std(window))
-
-        result = np.array(normalized_data)
-
-        x_test = result[:, :-1]
-        x_test = np.reshape(x_test, (x_test.shape[0], x_test.shape[1], 1))
-        y_test = result[:, -1]
-        pred = model.predict(x_test)
-        pred_result = []
-        pred_y = []
-        for i in range(len(pred)):
-            n1 = (pred[i] * window_std[i]) + window_mean[i]
-            n2 = (y_test[i] * window_std[i]) + window_mean[i]
-            pred_result.append(n1)
-            pred_y.append(n2)
-
-        plt.figure(facecolor='white', figsize=(9, 9))
-        plt.subplot(2, 1, 1)
-        plt.grid(True)
-        plt.plot(pred_y, label='Stock Price')
-        plt.plot(pred_result, label='AI predict')
-        plt.legend(loc='upper left')
-
-        plt.subplot(2, 1, 2)
-        plt.grid(True)
-        plt.plot(hist.history['loss'], color='k', linestyle='solid', label='Loss')
-        plt.plot(hist.history['val_loss'], color='g', linestyle='dashed', label='Val_loss')
-        plt.legend(loc='upper left')
-
-        fig = plt.gcf()
-        buf = io.BytesIO()
-
-        fig.savefig(buf, format='png')
-        buf.seek(0)
-        string = base64.b64encode(buf.read())
-        uri = 'data:image/png;base64,' + urllib.parse.quote(string)
-
-        return render(request, 'test4/result_predict2_2.html',{'uri': uri, 'today': today_str, 'tomorrow': tomorrow_date, 'today_price': int(close_prices[-1]),'tomorrow_price': int(tomorrow_price), 'tomorrow_error': tomorrow_error, 'name': name, 'code': code})
+        return render(request, 'test4/result_predict1_2.html')
+        # today = datetime.today()
+        # today_str = today.strftime("%Y-%m-%d")
+        # ##########################날짜###########################
+        # ##########################################################
+        # queryDict = dict(request.GET)
+        # code = queryDict['code'][0]
+        # df = fdr.DataReader(code)
+        # dataset = df.dropna()
+        # name_df = fdr.StockListing('KRX')
+        # tag = ''
+        # if code in name_df['Symbol'].values:
+        #     name = name_df.loc[name_df['Symbol'] == code, 'Name'].values[0]
+        #     tag = '.KS'
+        # tomorrow_data = stocker.predict.tomorrow(code + tag)
+        # tomorrow_price = tomorrow_data[0]
+        # tomorrow_error = tomorrow_data[1]
+        # tomorrow_date = tomorrow_data[2]
+        #
+        # ##########################################################
+        # ##########################################################
+        # close_prices = dataset['Close'].values
+        # seq_len = 50
+        # sequence_length = seq_len + 1
+        #
+        # result = []
+        # for index in range(len(close_prices) - sequence_length):
+        #     result.append(close_prices[index: index + sequence_length])
+        #
+        # normalized_data = []
+        # window_mean = []
+        # window_std = []
+        #
+        # for window in result:
+        #     normalized_window = [((p - np.mean(window)) / np.std(window)) for p in window]
+        #     normalized_data.append(normalized_window)
+        #     window_mean.append(np.mean(window))
+        #     window_std.append(np.std(window))
+        #
+        # result = np.array(normalized_data)
+        #
+        # # split train and test data
+        # row = int(round(result.shape[0] * 0.9))
+        # train = result[:row, :]
+        # # shuffle을 해도, 51개의 묶음은 변하지 않으므로 상관없음
+        # # 50일(x)로 1일(y) 예측
+        # np.random.shuffle(train)
+        #
+        # x_train = train[:, :-1]
+        # x_train = np.reshape(x_train, (x_train.shape[0], x_train.shape[1], 1))
+        # y_train = train[:, -1]
+        #
+        # x_test = result[row:, :-1]
+        # x_test = np.reshape(x_test, (x_test.shape[0], x_test.shape[1], 1))
+        # y_test = result[row:, -1]
+        #
+        # model = Sequential()
+        #
+        # model.add(LSTM(20, return_sequences=True, input_shape=(50, 1)))
+        # model.add(Dropout(0.5))
+        # model.add(LSTM(20, return_sequences=False))
+        # model.add(Dense(1, activation='linear'))
+        # model.compile(loss='mse', optimizer='adam')
+        # hist = model.fit(x_train, y_train, validation_data=(x_test, y_test), batch_size=64, epochs=10)
+        #
+        # lt = close_prices[-365:]
+        # seq_len = 50
+        # sequence_length = seq_len + 1
+        #
+        # result = []
+        # for index in range(len(lt) - sequence_length):
+        #     result.append(lt[index: index + sequence_length])
+        # normalized_data = []
+        # window_mean = []
+        # window_std = []
+        #
+        # for window in result:
+        #     normalized_window = [((p - np.mean(window)) / np.std(window)) for p in window]
+        #     normalized_data.append(normalized_window)
+        #     window_mean.append(np.mean(window))
+        #     window_std.append(np.std(window))
+        #
+        # result = np.array(normalized_data)
+        #
+        # x_test = result[:, :-1]
+        # x_test = np.reshape(x_test, (x_test.shape[0], x_test.shape[1], 1))
+        # y_test = result[:, -1]
+        # pred = model.predict(x_test)
+        # pred_result = []
+        # pred_y = []
+        # for i in range(len(pred)):
+        #     n1 = (pred[i] * window_std[i]) + window_mean[i]
+        #     n2 = (y_test[i] * window_std[i]) + window_mean[i]
+        #     pred_result.append(n1)
+        #     pred_y.append(n2)
+        #
+        # plt.figure(facecolor='white', figsize=(9, 9))
+        # plt.subplot(2, 1, 1)
+        # plt.grid(True)
+        # plt.plot(pred_y, label='Stock Price')
+        # plt.plot(pred_result, label='AI predict')
+        # plt.legend(loc='upper left')
+        #
+        # plt.subplot(2, 1, 2)
+        # plt.grid(True)
+        # plt.plot(hist.history['loss'], color='k', linestyle='solid', label='Loss')
+        # plt.plot(hist.history['val_loss'], color='g', linestyle='dashed', label='Val_loss')
+        # plt.legend(loc='upper left')
+        #
+        # fig = plt.gcf()
+        # buf = io.BytesIO()
+        #
+        # fig.savefig(buf, format='png')
+        # buf.seek(0)
+        # string = base64.b64encode(buf.read())
+        # uri = 'data:image/png;base64,' + urllib.parse.quote(string)
+        # return render(request, 'test4/result_predict2_2.html',{'uri': uri, 'today': today_str, 'tomorrow': tomorrow_date, 'today_price': int(close_prices[-1]),'tomorrow_price': int(tomorrow_price), 'tomorrow_error': tomorrow_error, 'name': name, 'code': code})
 
 def result_classify(request,num):  # 분류 카테고리로 이동
     if num == 0:
