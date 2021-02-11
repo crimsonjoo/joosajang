@@ -10,8 +10,8 @@ import FinanceDataReader as fdr
 import io
 import urllib, base64
 # import stocker
-from keras.models import Sequential
-from keras.layers import LSTM,Dropout,Dense,Activation
+# from keras.models import Sequential
+# from keras.layers import LSTM,Dropout,Dense,Activation
 from scipy import stats
 from sklearn.preprocessing import Normalizer
 from sklearn.preprocessing import MinMaxScaler
