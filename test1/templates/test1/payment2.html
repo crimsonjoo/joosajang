@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+{% load static %}
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="{% static 'test1/style_blank14.css' %}">
+    <link rel="icon" href="{% static 'main/favicon.ico' %}">
+  <script type="text/javascript" src="/static/main/cat.js"></script>
+  <title>주사장 - 추가 서비스</title>
+</head>
+
+<body>
+    <div class="subtite">
+        <h1 class="subtext2">종목을 선정하고 싶은데 시간이 없으신가요?</h1>
+        <h1 class="subtext2">이메일 주소로 보고서를 전송해드립니다!</h1>
+    </div>
+    <div class="subtite">
+        <h1 class="subtext2"></h1>
+    </div>
+    <div class="img_box">
+        <img src="{% static "test1/qr.jpg" %}">
+    </div>
+    <div class="subtite">
+        <h1 class="subtext2">이메일 주소, 기준 종목코드와 함께</h1>
+        <h1 class="subtext2">서비스 이용료 2,000원을 보내주세요.</h1>
+    </div>
+
+
+
+    <div class="btn_idx_group">
+        <div class="btn-group test">
+          <a href="{% url 'test1:payment_detail' idx=2%}" class="btn btn-info">
+            <button>
+              <h1 class="btn">결과보고서 예시</h1>
+            </button>
+          </a>
+        </div>
+
+        <div class="btn-group_vert test">
+          <a href="{% url 'main:index' %}" class="btn btn-info">
+            <button>
+              <h1 class="small_btn">메인화면으로</h1>
+            </button>
+          </a>
+        </div>
+    </div>
+
+</body>
+</html>
+
+<!--Copyright (c) 2021 by CookiePanda (https://codepen.io/CookiePanda/pen/XqWvdW)-->
+
+<!--Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:-->
+
+<!--The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.-->
+
+<!--THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.-->
+
+
+<!--Copyright (c) 2021 by Philip Park (https://codepen.io/PhilipMothPark/pen/XMrPRw)-->
+
+<!--Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:-->
+
+<!--The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.-->
+
+<!--THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.-->

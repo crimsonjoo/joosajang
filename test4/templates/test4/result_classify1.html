@@ -64,10 +64,10 @@
         <h1 class="tip">주사장's TIP</h1>
         <div class="align-text-box">
             <div class="tip-box">
-                <h1 class="tip_highlight_start_content">빠른 결과를 반환하기 위해 오직 코스닥 시장을 대상으로 합니다. 기준 종목코드(KOSDAQ)은 반드시 코스닥에 상장된 종목이어야 합니다.</h1>
+                <h1 class="tip_highlight_start_content">금일 기준으로 매번 새로이 코스닥 시장에 상장된 모든 종목에 해당 전략을 적용합니다.</h1>
             </div>
             <div class="tip-box">
-                <h1 class="tip_highlight_start_content">투자시 발생하는 수익과 손실은 모두 투자자 본인에게 귀속됩니다. 투자 판단에 대한 최종적인 책임과 결정은 본인에게 있음을 명심하세요.</h1>
+                <h1 class="tip_highlight_start_content"><종목 선정하기>클릭시, 계산 완료까지 필요한 시간은 대략 25분 내외로 예상합니다.</h1>
             </div>
         </div>
     </div>
@@ -83,6 +83,13 @@
                 </button>
             </div>
         </form>
+        <div class="btn-group_vert test">
+          <a href="{% url 'test1:payment' idx=2 %}" class="btn btn-info">
+            <button>
+              <h1 class="small_btn">시간이 없으신가요?</h1>
+            </button>
+          </a>
+        </div>
     </div>
 
 </body>

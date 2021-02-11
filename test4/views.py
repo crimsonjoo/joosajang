@@ -267,7 +267,7 @@ def detail_classify(request,idx):  # 분류 카테고리의 최종 결과값
         special_idx = list(final_df.index).index(special_code)  # 입력한 종목의 클러스터링에 쓰인 전체 코드중 위치한 순서
         companies = final_df.index
 
-        kmeans = KMeans(n_clusters=50, n_init=5, random_state=42)  ### 일별 수익률을 이용한 비지도 분류
+        kmeans = KMeans(n_clusters=100, n_init=10, random_state=42)  ### 일별 수익률을 이용한 비지도 분류
         kmeans.fit(final_df)
 
         special_label = kmeans.labels_[special_idx]  # 입력한 종목의 결과값 레이블
