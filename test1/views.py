@@ -27,16 +27,14 @@ def payment(request,idx):
         return render(request,'test1/payment0.html')
     if idx == 1:  # 듀얼 모멘텀의 결제 안내문구
         return render(request,'test1/payment1.html')
-    if idx == 2:  # 딥러닝 클러스터링의 결제 안내문구
-        return render(request,'test1/payment2.html')
+
 
 def payment_detail(request,idx):
     if idx == 0:
         return render(request,'test1/payment0_detail.html')
     if idx == 1:
         return render(request,'test1/payment1_detail.html')
-    if idx == 2:
-        return render(request,'test1/payment2_detail.html')
+
 
 def question1(request):
     return render(request,'test1/question1.html')

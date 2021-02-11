@@ -21,6 +21,14 @@ from sklearn.cluster import KMeans
 def index(request):
     return render(request,'test4/index.html')
 
+def payment(request,idx):
+    if idx == 0:  # 클러스터링 결제 안내문구
+        return render(request,'test4/payment0.html')
+
+def payment_detail(request,idx):
+    if idx == 0:   # 클러스터링 보고서 예시
+        return render(request,'test4/payment0_detail.html')
+
 def question(request):
     return render(request, 'test4/question.html')
 

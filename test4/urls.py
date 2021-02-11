@@ -5,6 +5,8 @@ app_name = 'test4'
 
 urlpatterns = [
     path('',views.index,name='index'),
+    path('payment/<int:idx>',views.payment,name='payment'),
+    path('payment/detail/<int:idx>',views.payment_detail,name='payment_detail'),
     path('question/',views.question,name='question'),
     path('predict/',views.predict,name='predict'),
     path('predict/<int:num>',views.result_predict,name='result_predict'),
