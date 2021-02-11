@@ -4,7 +4,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <link rel="stylesheet" type="text/css" href="{% static 'test2/style_blank4.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'test1/style_blank14.css' %}">
     <link rel="icon" href="{% static 'main/favicon.ico' %}">
   <script type="text/javascript" src="/static/main/cat.js"></script>
   <title>주사장의 보고서 - 종목별 유사군 분류</title>
@@ -13,27 +13,28 @@
 <body>
     <h1 class="title2">종목 선정 보고서</h1>
     <div class="big-bubble">
-        <h1 class="nametag">머신러닝 선정 종목</h1>
+        <h1 class="nametag">클러스터링 선정 종목</h1>
         <div class="align-text-box">
             <div class="text-box">
-                <h1 class="content">해당 보고서는 클러스터링 기법을</h1>
+                <h1 class="content">이 보고서는 해당 기법을</h1>
                 <h1 class="higlight_conent">금일({{today}}일) 기준</h1>
-                <h1 class="content_tail">으로 KOSDAQ 시장에 적용해 산출한 결과물입니다.</h1>
+                <h1 class="content_space_tail">KOSDAQ 시장에 적용해 산출한 결과물입니다.</h1>
             </div>
             <div class="text-box">
-                <h1 class="content">클러스터링 기법은 머신러닝의 비지도 학습법을 이용해 입력받은 데이터에 대해 유사한 특성을 지닌 군집끼리 묶어 분류합니다.</h1>
+                <h1 class="start_higlight_conent">KOSDAQ 시장에 상장된 종목들의 3개월치 일별 수익률을 입력해 컴퓨터가 스스로 특성을 추출해 분류하도록 했습니다.</h1>
             </div>
             <div class="text-box">
-                <h1 class="content">이를 이용하면 대상을 분류하는 기준을 직접 설정하지 않더라도 컴퓨터가 데이터를 분석해 분류하는 기준을 스스로 학습합니다.</h1>
-            </div>
-            <div class="text-box">
-                <h1 class="content">따라서</h1>
-                <h1 class="higlight_conent">KOSDAQ 시장에 상장된 종목들의 3개월치 일별 수익률을 입력해 컴퓨터가 스스로 특성을 추출해 분류하도록 했습니다.</h1>
-            </div>
-            <div class="text-box">
-                <h1 class="start_higlight_conent">이후 {{name}}({{code}})이 포함된 군집내 유망 종목 10개를 선별했습니다.</h1>
+                <h1 class="start_higlight_conent">클러스터링 알고리즘은 수 많은 군집중 {{name}}과 가장 유사한 유망 종목 10개를 선별했습니다.</h1>
             </div>
         </div>
+    </div>
+
+    <div class="text-box">
+        <h1 class="content"></h1>
+    </div>
+    <h1 class="img_caption">{{name}} ({{code}})</h1>
+    <div class="img_box">
+        <img src= {{uri}}>
     </div>
 
     <div class="table_box">

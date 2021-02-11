@@ -318,5 +318,23 @@ def detail_classify(request,idx):  # 분류 카테고리의 최종 결과값
             container.append(result_returns[i])
             table.append(container)
 
+        price_df = fdr.DataReader(special_code, start_date)
+        price_df = price_df.dropna()
 
-        return render(request, 'test4/result_classify1_2.html',{'today':today_str,'code':special_code,'name':special_name,'table':table})
+        df = price_df[['Open', 'High', 'Low', 'Close', 'Volume']]
+        kwargs = dict(type='candle', volume=True)
+        mc = mpf.make_marketcolors(up='r', down='b', inherit=True)
+        s = mpf.make_mpf_style(marketcolors=mc)
+
+        mpf.plot(df, **kwargs, style=s)
+        fig = plt.gcf()
+        buf = io.BytesIO()
+
+        fig.savefig(buf, format='png')
+        buf.seek(0)
+        string = base64.b64encode(buf.read())
+        uri = 'data:image/png;base64,' + urllib.parse.quote(string)
+
+
+
+        return render(request, 'test4/result_classify1_2.html',{'uri':uri,'today':today_str,'code':special_code,'name':special_name,'table':table})
