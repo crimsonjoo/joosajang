@@ -271,7 +271,7 @@ outline: none;
 
 .little_table_box {
     display : flex;
-    justify-content: center;
+    align-items:  flex-start;
     padding-bottom : 1rem;
 }
 

@@ -491,8 +491,8 @@ def detail(request,idx):  #여기선 결과물이 idx 0: 볼린저추세추종, 
         name_df = fdr.StockListing('KRX')
         name = name_df.loc[name_df['Symbol'] == code, 'Name'].values[0]
 
-        price_df['ema5'] = price_df.Close.ewm(span=5).mean()
         price_df['ema20'] = price_df.Close.ewm(span=20).mean()
+        price_df['ema60'] = price_df.Close.ewm(span=60).mean()
         price_df['st_rtn'] = (1 + price_df['Change']).cumprod()
         price_df = price_df.dropna()
         price_df['number'] = price_df.index.map(mdates.date2num)
@@ -508,25 +508,25 @@ def detail(request,idx):  #여기선 결과물이 idx 0: 볼린저추세추종, 
         p3 = plt.subplot(2, 1, 2)
         plt.grid(True)
         p3.xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m'))
-        plt.plot(price_df.number, price_df['ema5'], color='g', linestyle='solid', label='EMA 5')
-        plt.plot(price_df.number, price_df['ema20'], color='k', linestyle='solid', label='EMA 20')
+        plt.plot(price_df.number, price_df['ema20'], color='g', linestyle='solid', label='EMA 20')
+        plt.plot(price_df.number, price_df['ema60'], color='k', linestyle='solid', label='EMA 60')
 
         buy_list = []
         sell_list = []
         returns = 0
         own_price = 0
         for i in range(1, len(price_df.Close)):
-            if price_df['ema5'].values[i] > price_df['ema20'].values[i] and price_df['ema5'].values[i - 1] < \
-                    price_df['ema20'].values[i - 1]:
-                plt.plot(price_df.number.values[i], price_df['ema5'].values[i], 'r^')
+            if price_df['ema20'].values[i] > price_df['ema60'].values[i] and price_df['ema20'].values[i - 1] < \
+                    price_df['ema60'].values[i - 1]:
+                plt.plot(price_df.number.values[i], price_df['ema20'].values[i], 'r^')
                 date = np.datetime_as_string(price_df.index.values[i], unit='D')
                 cost = price_df.Close.values[i]
                 if own_price == 0:
                     own_price += cost
                     buy_list.append([date, cost])
-            elif price_df['ema5'].values[i] < price_df['ema20'].values[i] and price_df['ema5'].values[i - 1] > \
-                    price_df['ema20'].values[i - 1]:
-                plt.plot(price_df.number.values[i], price_df['ema5'].values[i], 'bv')
+            elif price_df['ema20'].values[i] < price_df['ema60'].values[i] and price_df['ema20'].values[i - 1] > \
+                    price_df['ema60'].values[i - 1]:
+                plt.plot(price_df.number.values[i], price_df['ema20'].values[i], 'bv')
                 date = np.datetime_as_string(price_df.index.values[i], unit='D')
                 cost = price_df.Close.values[i]
                 if own_price != 0:
