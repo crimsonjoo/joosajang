@@ -33,7 +33,7 @@ font-style: normal;
 background-color : white;
     width : 80%;
     padding : 2rem;
-    padding-radius : 1rem;
+    border-radius : 1rem;
     margin : 0 auto;
 }
 
