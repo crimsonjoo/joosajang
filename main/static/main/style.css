@@ -27,6 +27,11 @@ font-weight: normal;
 font-style: normal;
 }
 
+.disqus-row {
+    background-color : white;
+    border-radius: 0.75rem;
+}
+
 .ad-banner {
     width : 20rem;
     margin : 0 auto;

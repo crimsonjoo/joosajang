@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'test2',
     'test3',
     'test4',
+    'disqus',
+    'django.contrib.sites',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -124,3 +126,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+
+# Disqus
+DISQUS_WEBSITE_SHORTNAME = 'joosajang'
+SITE_ID = 1
