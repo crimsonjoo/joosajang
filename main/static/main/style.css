@@ -48,7 +48,11 @@ font-style: normal;
     padding-bottom : 0.25rem;
 }
 
-
+.banner_box {
+    display : flex;
+    justify-content : space-around;
+    margin : 0 auto;
+}
 
 .btn {
     font-size:1.3rem;
