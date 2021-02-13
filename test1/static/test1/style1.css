@@ -28,7 +28,9 @@ font-style: normal;
 }
 
 .disqus-row {
-    padding : 3rem;
+background-color : white;
+    width : 80%;
+    padding : 0 3rem;
     padding-radius : 1rem;
     margin : 0 auto;
 }
