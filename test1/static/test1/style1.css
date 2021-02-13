@@ -27,11 +27,32 @@ font-weight: normal;
 font-style: normal;
 }
 
-.ad-banner {
-    width : 20rem;
+.disqus-row {
+    padding-top : 3rem;
+    padding-bottom : 1rem;
     margin : 0 auto;
 }
 
+
+.ad-banner_longline {
+    width : 45.5rem;
+    margin : 0 auto;
+    padding-top : 0.25rem;
+    padding-bottom : 0.25rem;
+}
+
+.ad-banner_line {
+    width : 20rem;
+    margin : 0 auto;
+    padding-top : 0.25rem;
+    padding-bottom : 0.25rem;
+}
+
+.banner_box {
+    display : flex;
+    justify-content : space-around;
+    margin : 0 auto;
+}
 
 
 button {
