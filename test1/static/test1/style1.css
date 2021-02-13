@@ -28,11 +28,11 @@ font-style: normal;
 }
 
 .disqus-row {
-    padding-top : 3rem;
+    padding : 0 3rem;
+    padding-top : 2rem;
     padding-bottom : 1rem;
     margin : 0 auto;
 }
-
 
 .ad-banner_longline {
     width : 45.5rem;
