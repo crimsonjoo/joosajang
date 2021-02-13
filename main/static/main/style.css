@@ -28,13 +28,16 @@ font-style: normal;
 }
 
 .disqus-row {
-    background-color : white;
-    border-radius: 0.75rem;
+    padding-top : 0.5rem;
+    padding-bottom : 1rem;
+    margin : 0 auto;
 }
 
 .ad-banner {
     width : 20rem;
     margin : 0 auto;
+    padding-top : 0.25rem;
+    padding-bottom : 0.25rem;
 }
 
 
