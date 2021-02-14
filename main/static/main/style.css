@@ -160,7 +160,8 @@ outline: none;
     text-align:center;
 }
 
-.img_box {
+.img_box_jocoding {
+    margin-top : 4rem;
     display : flex;
     justify-content: center;
     align-items:center;
