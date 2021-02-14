@@ -16,7 +16,7 @@ Including another URLconf
 from django.urls import path
 from django.contrib import admin
 from django.conf.urls import include
-
+from django.http import HttpResponse
 
 
 urlpatterns = [
@@ -26,6 +26,7 @@ urlpatterns = [
     path('test2/', include('test2.urls')),
     path('test3/', include('test3.urls')),
     path('test4/', include('test4.urls')),
+    path('robots.txt/', lambda x: HttpResponse("User-agent: *Allow:/Sitemap: https://www.joosajang.website/sitemap.xml", content_type="text/plain")),
 ]
 
 
