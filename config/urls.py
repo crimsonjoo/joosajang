@@ -22,7 +22,6 @@ urlpatterns = [
     path('test2/', include('test2.urls')),
     path('test3/', include('test3.urls')),
     path('test4/', include('test4.urls')),
-    path('robots.txt/', TemplateView.as_view(template_name="robots.txt",content_type='text/plain')),
 ]
 
 
