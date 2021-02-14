@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://www.joosajang.website/</loc>
+  <lastmod>2021-02-14T06:57:27+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://www.joosajang.website/test1/</loc>
+  <lastmod>2021-02-14T06:57:27+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.joosajang.website/test2/</loc>
+  <lastmod>2021-02-14T06:57:27+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.joosajang.website/test3/</loc>
+  <lastmod>2021-02-14T06:57:27+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.joosajang.website/test4/</loc>
+  <lastmod>2021-02-14T06:57:27+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.joosajang.website/test1/question1/</loc>
+  <lastmod>2021-02-14T06:57:27+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.joosajang.website/test1/index2/</loc>
+  <lastmod>2021-02-14T06:57:27+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.joosajang.website/test2/question1/</loc>
+  <lastmod>2021-02-14T06:57:27+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.joosajang.website/test2/index2/</loc>
+  <lastmod>2021-02-14T06:57:27+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.joosajang.website/test3/result</loc>
+  <lastmod>2021-02-14T06:57:27+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.joosajang.website/test4/question/</loc>
+  <lastmod>2021-02-14T06:57:27+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.joosajang.website/test1/question2/</loc>
+  <lastmod>2021-02-14T06:57:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.joosajang.website/test1/result/0</loc>
+  <lastmod>2021-02-14T06:57:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.joosajang.website/test1/result/1</loc>
+  <lastmod>2021-02-14T06:57:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.joosajang.website/test1/result/2</loc>
+  <lastmod>2021-02-14T06:57:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.joosajang.website/test1/result/3</loc>
+  <lastmod>2021-02-14T06:57:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.joosajang.website/test2/question2/</loc>
+  <lastmod>2021-02-14T06:57:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.joosajang.website/test2/result/5</loc>
+  <lastmod>2021-02-14T06:57:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.joosajang.website/test2/result/4</loc>
+  <lastmod>2021-02-14T06:57:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.joosajang.website/test2/result/0</loc>
+  <lastmod>2021-02-14T06:57:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.joosajang.website/test2/result/1</loc>
+  <lastmod>2021-02-14T06:57:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.joosajang.website/test2/result/2</loc>
+  <lastmod>2021-02-14T06:57:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.joosajang.website/test2/result/3</loc>
+  <lastmod>2021-02-14T06:57:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.joosajang.website/test4/predict/</loc>
+  <lastmod>2021-02-14T06:57:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.joosajang.website/test4/classify/</loc>
+  <lastmod>2021-02-14T06:57:27+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://www.joosajang.website/test1/question3/</loc>
+  <lastmod>2021-02-14T06:57:27+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://www.joosajang.website/test4/classify/0</loc>
+  <lastmod>2021-02-14T06:57:27+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://www.joosajang.website/test4/classify/1</loc>
+  <lastmod>2021-02-14T06:57:27+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://www.joosajang.website/test1/question4/0</loc>
+  <lastmod>2021-02-14T06:57:27+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://www.joosajang.website/test1/question4/1</loc>
+  <lastmod>2021-02-14T06:57:27+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://www.joosajang.website/test4/payment/0</loc>
+  <lastmod>2021-02-14T06:57:27+00:00</lastmod>
+  <priority>0.33</priority>
+</url>
+<url>
+  <loc>https://www.joosajang.website/test4/payment/detail/0</loc>
+  <lastmod>2021-02-14T06:57:27+00:00</lastmod>
+  <priority>0.26</priority>
+</url>
+
+
+</urlset>
