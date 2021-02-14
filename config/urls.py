@@ -18,6 +18,15 @@ from django.contrib import admin
 from django.conf.urls import include
 from django.http import HttpResponse
 
+# sitemap import
+from .sitemaps import *
+from django.contrib.sitemaps.views import sitemap
+
+
+sitemaps = {
+    'static':StaticViewSitemap,
+}
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,7 +35,8 @@ urlpatterns = [
     path('test2/', include('test2.urls')),
     path('test3/', include('test3.urls')),
     path('test4/', include('test4.urls')),
-    path('robots.txt/', lambda x: HttpResponse("User-agent: *Allow:/Sitemap: https://www.joosajang.website/sitemap.xml", content_type="text/plain")),
+    path('robots.txt/', lambda x: HttpResponse("User-agent: *Allow:/", content_type="text/plain")),
+    path('sitemap.xml',sitemap,{'sitemaps':sitemaps},name='sitemap'),
 ]
 
 
