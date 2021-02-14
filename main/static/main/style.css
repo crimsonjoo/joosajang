@@ -156,6 +156,14 @@ outline: none;
     text-align:center;
 }
 
+.img_box {
+    display : flex;
+    justify-content: center;
+    align-items:center;
+    padding : 1rem
+    border-radius : 1rem;
+}
+
 body {
         background-color: #a8d3e2;
         font-family: 'MaplestoryOTFBold';
