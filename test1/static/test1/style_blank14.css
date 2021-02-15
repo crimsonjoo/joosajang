@@ -50,32 +50,7 @@ background-color : white;
 }
 
 
-.ad-banner_longline {
-    margin : 0 auto;
-    padding-top : 0.25rem;
-    padding-bottom : 0.25rem;
-}
 
-.ad-banner_line {
-    width : 20rem;
-    margin : 0 auto;
-    padding-top : 0.25rem;
-    padding-bottom : 0.25rem;
-}
-
-.ad-banner_rect {
-    width : 18.75rem;
-    margin : 0 auto;
-    padding-top : 0.5rem;
-    padding-bottom : 0.5rem;
-}
-
-.ad-banner_vertical {
-    width : 10rem;
-    margin : 0 auto;
-    padding-top : 0.25rem;
-    padding-bottom : 0.25rem;
-}
 
 body {
         background-color: #a8d3e2;
