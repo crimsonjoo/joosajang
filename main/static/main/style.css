@@ -46,14 +46,9 @@ background-color : white;
 }
 
 .clickmon_longline {
-    width : 45.5rem;
     margin : 0 auto;
     padding-top : 0.2rem;
     padding-bottom : 0.3rem;
-}
-
-.clickmon_longline iframe {
-    width : 100%;
 }
 
 .ad-banner_longline {
