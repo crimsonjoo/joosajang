@@ -47,6 +47,34 @@ background-color : white;
     padding-bottom : 0.3rem;
 }
 
+
+.ad-banner_longline {
+    margin : 0 auto;
+    padding-top : 0.25rem;
+    padding-bottom : 0.25rem;
+}
+
+.ad-banner_line {
+    width : 20rem;
+    margin : 0 auto;
+    padding-top : 0.25rem;
+    padding-bottom : 0.25rem;
+}
+
+.ad-banner_rect {
+    width : 18.75rem;
+    margin : 0 auto;
+    padding-top : 0.5rem;
+    padding-bottom : 0.5rem;
+}
+
+.ad-banner_vertical {
+    width : 10rem;
+    margin : 0 auto;
+    padding-top : 0.25rem;
+    padding-bottom : 0.25rem;
+}
+
 button {
 color: white;
 font-family: 'MaplestoryOTFBold';
