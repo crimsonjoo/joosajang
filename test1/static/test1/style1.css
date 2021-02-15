@@ -49,7 +49,7 @@ background-color : white;
 
 .clickmon_padding {
     padding-top : 0.5rem;
-    padding-bottom : 0.5rem;
+    padding-bottom : 0.3rem;
 }
 
 button {
@@ -92,6 +92,14 @@ top: 0.43rem;
 outline: none;
 }
 
+
+.btn_idx_group {
+    margin-top : 4rem;
+    margin-bottom : 5rem;
+    display : flex;
+    flex-direction : column;
+    align-items : center;
+}
 
 .idxtitle {
     font-size: 5rem;

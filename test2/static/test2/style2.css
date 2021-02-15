@@ -34,6 +34,10 @@ background-color : white;
     border-radius : 1rem;
     margin : 0 auto;
 }
+.clickmon_padding {
+    padding-top : 0.5rem;
+    padding-bottom : 0.3rem;
+}
 
 .ad-banner_longline {
     width : 45.5rem;
@@ -107,6 +111,14 @@ top: 0.43rem;
 }
 .btn_special:focus {
 outline: none;
+}
+
+.btn_idx_group {
+    margin-top : 4rem;
+    margin-bottom : 5rem;
+    display : flex;
+    flex-direction : column;
+    align-items : center;
 }
 
 .tailtitle {
