@@ -40,10 +40,17 @@ background-color : white;
 }
 
 .ad-banner_longline {
+    position : relative;
     width : 45.5rem;
     margin : 0 auto;
     padding-top : 0.25rem;
     padding-bottom : 0.25rem;
+}
+
+.ad-banner_longline iframe {
+    position : absolute;
+    width : 100%;
+    height : 100%;
 }
 
 .ad-banner_line {
