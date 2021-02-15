@@ -144,8 +144,14 @@
   </div>
 
   <div class="clickmon_longline">
-    <!-- 아래 값 &sb="여기에 값을 넣으시면 컨텐츠 제목 변경가능 합니다."(html 태그 사용안됨/urlencode 후 삽입) -->
-    <iframe width="750" height="430" allowtransparency="true" src="https://tab2.clickmon.co.kr/pop/hit_view_w_s.php?PopAd=CM_M_1003067%7C%5E%7CCM_A_1087291%7C%5E%7CAdver_M_1046207&hv=430&mon_rf=REFERRER_URL&sb=" frameborder="0" scrolling="no"></iframe>
+    <script type="text/javascript">
+    //아래 값 cm_text="여기에 값을 넣으시면 컨텐츠 제목 변경가능 합니다.(html 태그 사용안됨)";
+    var cm_text = "";
+    (function(h,i,t,v,ie,w,box){
+    t=t+'?hv='+ie+'&PopAd='+v+'&mon_rf='+encodeURIComponent(h.referrer)+'&sb='+encodeURIComponent(box);
+    h.write("<"+i+"><"+w+" allowtransparency='true' src='"+t+"' frameborder='0' scrolling='no' width='750px' height='"+ie+"' ></"+w+"></"+i+">");
+    })(document,'center','https://tab2.clickmon.co.kr/pop/hit_view_w_text.php','CM_M_1003067%7C%5E%7CCM_A_1087291%7C%5E%7CAdver_M_1046207','210','iframe',cm_text);
+    </script>
   </div>
 
   <div class="clickmon_hitview">
