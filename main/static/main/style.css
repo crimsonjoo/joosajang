@@ -79,6 +79,13 @@ background-color : white;
     padding-bottom : 0.25rem;
 }
 
+.btn_idx_group {
+    margin-top : 4rem;
+    margin-bottom : 5rem;
+    display : flex;
+    flex-direction : column;
+    align-items : center;
+}
 
 .btn {
     font-size:1.3rem;
