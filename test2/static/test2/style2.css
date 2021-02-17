@@ -35,8 +35,10 @@ background-color : white;
     margin : 0 auto;
 }
 .clickmon_padding {
+    margin : 0 auto;
+    width : 45.5rem;
     padding-top : 0.35rem;
-    padding-bottom : 0.35rem;
+    padding-bottom : 0.25rem;
 }
 
 .ad-banner_longline {
