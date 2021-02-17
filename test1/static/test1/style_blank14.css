@@ -291,6 +291,9 @@ outline: none;
     align-items:center;
 }
 
+.img_box2 {
+    margin : 0 auto;
+}
 
 .table_box {
     display : flex;
