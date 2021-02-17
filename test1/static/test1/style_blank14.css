@@ -43,6 +43,12 @@ background-color : white;
     margin : 0 auto;
 }
 
+.clickmon_box {
+    margin : 0 auto;
+    width : 18.75rem;
+    padding-bottom : 0.4rem;
+}
+
 .clickmon_shortline {
     margin : 0 auto;
     width : 20rem;
