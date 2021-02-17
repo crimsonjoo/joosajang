@@ -34,9 +34,10 @@ background-color : white;
     border-radius : 1rem;
     margin : 0 auto;
 }
-.clickmon_padding {
+
+.clickmon_shortline {
     margin : 0 auto;
-    width : 45.5rem;
+    width : 20rem;
     padding-top : 0.35rem;
     padding-bottom : 0.25rem;
 }
