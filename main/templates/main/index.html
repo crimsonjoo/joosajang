@@ -74,7 +74,7 @@
   <div class="btn_group">
     <div class="btn-group">
       <a href="{% url 'test1:index' %}" class="btn btn-info">
-        <button>
+        <button id="Select">
           <h1 class="btn">내 성향에 맞는 종목 선정</h1>
         </button>
       </a>
@@ -82,7 +82,7 @@
 
     <div class="btn-group">
       <a href="{% url 'test2:index' %}" class="btn btn-info">
-        <button >
+        <button id="Select">
           <h1 class="btn">내 전략에 맞는 매매 시기</h1>
         </button>
       </a>
@@ -90,7 +90,7 @@
 
     <div class="btn-group">
       <a href="{% url 'test3:index' %}" class="btn btn-info">
-        <button >
+        <button id="Select">
             <h1 class="btn">관심종목 투자 성과 분석</h1>
         </button>
       </a>
@@ -98,7 +98,7 @@
 
     <div class="btn-group">
       <a href="{% url 'test4:index' %}" class="btn btn-info">
-        <button class="btn_special">
+        <button id="Select" class="btn_special">
             <h1 class="btn">머신러닝 금융 분석실</h1>
         </button>
       </a>
@@ -173,6 +173,19 @@
             <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
         </div>
   </div>
+
+<div id="loading">
+    <div class="loading">Loading&#8230;</div>
+</div>
+<script>
+$(document).ready(function() {
+    $('#loading').hide();
+    $("#Select").bind("click",function(){
+        $('#loading').show();
+         return true;
+    });
+});
+</script>
 
 </body>
 
