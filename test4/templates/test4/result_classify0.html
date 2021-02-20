@@ -7,6 +7,7 @@
   <link rel="stylesheet" type="text/css" href="{% static 'test1/style_blank14.css' %}">
     <link rel="icon" href="{% static 'main/favicon.ico' %}">
   <script type="text/javascript" src="/static/main/cat.js"></script>
+    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
     <script data-ad-client="ca-pub-9317952330520251" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   <title>종목의 상관관계 분석</title>
 </head>
@@ -116,7 +117,7 @@
                 <label>두번째 종목코드 : <input type="text" name="code2" placeholder="ex) 035720" size="7"></label>
             </div>
             <div class="btn-box">
-                <button type="submit">
+                <button id="Select"  type="submit">
                     <h1 class="btn">분석하기</h1>
                 </button>
             </div>
@@ -157,7 +158,18 @@
         </div>
   </div>
 
-
+<div id="loading">
+    <div class="loading">Loading&#8230;</div>
+</div>
+<script>
+$(document).ready(function() {
+    $('#loading').hide();
+    $("#Select").bind("click",function(){
+        $('#loading').show();
+         return true;
+    });
+});
+</script>
 
 </body>
 </html>
