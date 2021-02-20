@@ -72,7 +72,13 @@
                 <h1 class="tip_highlight_content">금일 기준으로 매번 새로이 코스닥 시장에 상장된 모든 종목에 해당 전략을 적용합니다.</h1>
             </div>
             <div class="tip-box">
-                <h1 class="tip_highlight_content"><종목 선정하기>클릭시, 계산 완료까지 필요한 시간은 대략 30분 내외로 예상합니다.</h1>
+                <h1 class="tip_highlight_content"><종목 선정하기>클릭시, 계산 완료까지 필요한 시간은 대략 40분 내외로 예상합니다.</h1>
+            </div>
+            <div class="tip-box">
+                <h1 class="tip_highlight_content">사용자의 요청이 많을 경우, 서버 안정화를 위해 결과물 연산이 취소될 수 있습니다.</h1>
+            </div>
+            <div class="tip-box">
+                <h1 class="tip_highlight_content">외부 서버부터 결과물 확인을 원하시면 <도움이 필요하신가요?> 버튼을 눌러주세요.</h1>
             </div>
         </div>
     </div>
@@ -88,7 +94,7 @@
         <div class="btn-group_vert test">
           <a href="{% url 'test1:payment' idx=1 %}" class="btn btn-info">
             <button>
-              <h1 class="small_btn">시간이 없으신가요?</h1>
+              <h1 class="small_btn">도움이 필요하신가요?</h1>
             </button>
           </a>
         </div>
@@ -127,6 +133,20 @@
             <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
         </div>
   </div>
+
+
+<div id="loading">
+    <div class="loading">Loading&#8230;</div>
+</div>
+<script>
+$(document).ready(function() {
+    $('#loading').hide();
+    $("#Select").bind("click",function(){
+        $('#loading').show();
+         return true;
+    });
+});
+</script>
 
 </body>
 </html>
