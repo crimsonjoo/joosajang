@@ -82,7 +82,7 @@
                 <label>조회 기준일: <input type="text" name="date" placeholder="ex) 1996-02-29" size="10"></label>
             </div>
             <div class="btn-box">
-                <button type="submit">
+                <button id="Select"  type="submit">
                     <h1 class="btn">매매 시기 확인하기</h1>
                 </button>
             </div>
@@ -124,7 +124,18 @@
         </div>
   </div>
 
-
+<div id="loading">
+    <div class="loading">Loading&#8230;</div>
+</div>
+<script>
+$(document).ready(function() {
+    $('#loading').hide();
+    $("#Select").bind("click",function(){
+        $('#loading').show();
+         return true;
+    });
+});
+</script>
 
 </body>
 </html>
