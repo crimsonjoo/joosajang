@@ -381,7 +381,7 @@ def detail_classify(request,idx):  # 분류 카테고리의 최종 결과값
                 page += 1
         def convert_to_code(company, maxpage):
 
-            data = pd.read_csv('./test4/static/test4/company_list.txt', dtype=str, sep='\t')  # 종목코드 추출
+            data = pd.read_csv('./joosajang/test4/static/test4/company_list.txt', dtype=str, sep='\t')  # 종목코드 추출
             company_name = data['회사명']
             keys = [i for i in company_name]  # 데이터프레임에서 리스트로 바꾸기
 
@@ -427,7 +427,7 @@ def detail_classify(request,idx):  # 분류 카테고리의 최종 결과값
         for token in tokens:
             text = text + token + " "
 
-        wordcloud = WordCloud(font_path='./test4/static/test4/KOTRA_BOLD.ttf',
+        wordcloud = WordCloud(font_path='./joosajang/test4/static/test4/KOTRA_BOLD.ttf',
                               max_font_size=45,
                               background_color='white').generate(text)
         fig = plt.gcf()
