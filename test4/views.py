@@ -420,7 +420,7 @@ def detail_classify(request,idx):  # 분류 카테고리의 최종 결과값
                         token_list.append(word)
             return token_list
 
-        company_name, company_code =convert_to_code(special_code, 100)
+        company_name, company_code =convert_to_code(special_code, 200)
         clean_list = [clean_str(sentence) for sentence in total_list]
         tokens = tokenize_str(clean_list)
         text = ""
