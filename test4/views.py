@@ -15,6 +15,11 @@ import urllib, base64
 from scipy import stats
 from sklearn.preprocessing import Normalizer
 from sklearn.cluster import KMeans
+from bs4 import BeautifulSoup
+import requests
+import re
+from wordcloud import WordCloud
+
 
 
 
@@ -175,6 +180,8 @@ def result_classify(request,num):  # 분류 카테고리로 이동
         return render(request, 'test4/result_classify0.html')
     if num == 1:
         return render(request, 'test4/result_classify1.html')
+    if num == 2:
+        return render(request, 'test4/result_classify2.html')
 
 def detail_classify(request,idx):  # 분류 카테고리의 최종 결과값
     if idx == 0:
@@ -346,3 +353,108 @@ def detail_classify(request,idx):  # 분류 카테고리의 최종 결과값
 
 
         return render(request, 'test4/result_classify1_2.html',{'uri':uri,'today':today_str,'code':special_code,'name':special_name,'table':table})
+    elif idx == 2:
+        ### 조회할 대상을 바꾸려면 total_list 의 대상을 KOSPI,KOSDAQ,KRX 중 선택해 바꾼다
+        today = datetime.today()
+        today_str = today.strftime("%Y-%m-%d")
+        # ##########################날짜###########################
+        queryDict = dict(request.GET)
+        special_code = queryDict['code'][0] # 입력한 종목의 코드
+        # ##########################################################
+        total_list = []
+        def crawler(company_code, maxpage):
+            page = 1
+            while page <= int(maxpage):
+                url = 'https://finance.naver.com/item/news_news.nhn?code=' + \
+                      str(company_code) + '&page=' + str(page)
+                source_code = requests.get(url).text
+                html = BeautifulSoup(source_code, "lxml")
+
+                # 뉴스 제목
+                titles = html.select('.title')
+
+                for title in titles:
+                    title = title.get_text()
+                    title = re.sub('\n', '', title)
+                    total_list.append(title)
+
+                page += 1
+        def convert_to_code(company, maxpage):
+
+            data = pd.read_csv('./test4/static/test4/company_list.txt', dtype=str, sep='\t')  # 종목코드 추출
+            company_name = data['회사명']
+            keys = [i for i in company_name]  # 데이터프레임에서 리스트로 바꾸기
+
+            company_code = data['종목코드']
+            values = [j for j in company_code]
+
+            dict_result = dict(zip(keys, values))  # 딕셔너리 형태로 회사이름과 종목코드 묶기
+            dict_result2 = dict(zip(values, keys))
+
+            pattern = '[a-zA-Z가-힣]+'
+
+            if bool(re.match(pattern, company)) == True:  # Input에 이름으로 넣었을 때
+                company_code = dict_result.get(str(company))
+                crawler(company_code, maxpage)
+                return company, company_code
+
+            else:  # Input에 종목코드로 넣었을 때
+                company_name = dict_result2.get(str(company))
+                company_code = str(company)
+                crawler(company_code, maxpage)
+                return company_name,company_code
+
+        def clean_str(string):
+            string = re.sub('([ㄱ-ㅎㅏ-ㅣ])+', " ", str(string))
+            string = re.sub('<[^>]*>', " ", str(string))
+            string = re.sub('[^\w\s]', " ", str(string))
+            string = re.sub(re.compile(r'\s+'), " ", str(string))
+            return string
+        def tokenize_str(sentence_list):
+            token_list = []
+            for sentence in sentence_list:
+                words = sentence.split(' ')
+                for word in words:
+                    word = word.rstrip().lstrip()
+                    if word != '':
+                        token_list.append(word)
+            return token_list
+
+        company_name, company_code =convert_to_code(special_code, 400)
+        clean_list = [clean_str(sentence) for sentence in total_list]
+        tokens = tokenize_str(clean_list)
+        text = ""
+        for token in tokens:
+            text = text + token + " "
+
+        wordcloud = WordCloud(font_path='./test4/static/test4/KOTRA_BOLD.ttf',
+                              max_font_size=45,
+                              background_color='white').generate(text)
+        fig = plt.gcf()
+        plt.imshow(wordcloud, interpolation='lanczos')
+        plt.axis('off')
+        buf = io.BytesIO()
+
+        fig.savefig(buf, format='png')
+        buf.seek(0)
+        string = base64.b64encode(buf.read())
+        uri = 'data:image/png;base64,' + urllib.parse.quote(string)
+
+
+
+        count_dict = {}
+        for token in tokens:
+            if token in count_dict.keys():
+                count_dict[token] += 1
+            else:
+                count_dict[token] = 1
+
+        word = np.array(list(count_dict.keys()))
+        count = np.array(list(count_dict.values()))
+        index = count.argsort()[::-1][1:6]
+        table = list(word[index])
+
+        # print(today_str,company_name,company_code,table)
+
+
+        return render(request, 'test4/result_classify2_2.html',{'uri':uri,'today':today_str,'name':special_code,'code':company_code,'table_0':table[0],'table_1':table[1],'table_2':table[2],'table_3':table[3],'table_4':table[4]})

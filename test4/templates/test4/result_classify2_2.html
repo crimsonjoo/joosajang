@@ -8,41 +8,99 @@
     <link rel="icon" href="{% static 'main/favicon.ico' %}">
   <script type="text/javascript" src="/static/main/cat.js"></script>
     <script data-ad-client="ca-pub-9317952330520251" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-  <title>머신러닝 금융 분석 - 종목 분석/분류</title>
+  <title>주사장의 보고서 - 뉴스 텍스트 마이닝</title>
 </head>
 
 <body>
-    <div class="subtite">
-        <h1 class="subtext2">원하시는 결과를 선택해주세요.</h1>
+
+    <h1 class="title2">종목 분석 보고서</h1>
+
+    <h1 class="img_caption">{{name}} ({{code}}) 핵심 키워드</h1>
+    <div class="img_box">
+        <img src= {{uri}}>
     </div>
 
+    <div class="table_box">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">1위</th>
+              <th scope="col">2위</th>
+              <th scope="col">3위</th>
+              <th scope="col">4위</th>
+              <th scope="col">5위</th>
+            </tr>
+          </thead>
+              <tbody>
+                <tr>
+                    <td data-label="Account">{{table_0}}</td>
+                    <td data-label="Due Date">{{table_1}}</td>
+                    <td data-label="Amount">{{table_2}}</td>
+                    <td data-label="Period">{{table_3}}</td>
+                    <td data-label="Period">{{table_4}}</td>
+                </tr>
+              </tbody>
+        </table>
+    </div>
+<!--    <div class="big-bubble">-->
+<!--        <div class="align-text-box">-->
+<!--            <div class="text-box">-->
+<!--                <h1 class="start_higlight_conent">단순 수익률 : 해당 종목의 투자 기간({{start}} ~ {{today}}) 발생한 수익률 입니다.</h1>-->
+<!--            </div>-->
+
+<!--            <div class="text-box">-->
+<!--                <h1 class="content"></h1>-->
+<!--            </div>-->
+<!--            <div class="text-box">-->
+<!--                <h1 class="start_higlight_conent">연평균 복리 수익률 : 장기투자의 수익률을 평가할 때 반드시 연평균 증가율을 확인 해야합니다.</h1>-->
+<!--            </div>-->
+
+<!--            <div class="text-box">-->
+<!--                <h1 class="content"></h1>-->
+<!--            </div>-->
+
+<!--            <div class="text-box">-->
+<!--                <h1 class="start_higlight_conent">최대 낙폭 : 해당 종목의 투자자가 겪을 수 있는 최대 고통을 측정하는 지수이며 낮을수록 좋습니다.</h1>-->
+<!--            </div>-->
+
+<!--            <div class="text-box">-->
+<!--                <h1 class="content"></h1>-->
+<!--            </div>-->
+
+<!--            <div class="text-box">-->
+<!--                <h1 class="start_higlight_conent">변동성 : 수익률의 표준 편차로 계산하며 이 수치가 낮을수록 흐름이 안정적이라는 의미입니다.</h1>-->
+<!--            </div>-->
+
+<!--            <div class="text-box">-->
+<!--                <h1 class="content"></h1>-->
+<!--            </div>-->
+<!--            <div class="text-box">-->
+<!--                <h1 class="start_higlight_conent">샤프 지수 : 위험 대비 수익성을 표현하며 보통 1 이상만 되어도 충분하다고 판단합니다.</h1>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+
+    <div class="big-bubble">
+        <h1 class="tip"> </h1>
+        <div class="align-text-box">
+            <div class="tip-box">
+                <h1 class="tip_highlight_start_content">핵심 키워드를 살펴보면 해당 종목의 트렌드와 연관 정보를 한눈에 확인할 수 있습니다.</h1>
+            </div>
+            <div class="tip-box">
+                <h1 class="tip_highlight_start_content">대중매체가 주목하는 기술 혹은 제품을 확인해 앞으로 시장을 선도할 기업을 찾아보세요.</h1>
+            </div>
+        </div>
+    </div>
+
+
+
     <div class="btn_idx_group">
-
-        <div class="btn-group test">
-          <a href="{% url 'test4:result_classify' num=0 %}" class="btn btn-info">
-            <button>
-              <h1 class="medium_btn">종목의 상관관계 분석</h1>
-            </button>
-          </a>
-        </div>
-        <div class="btn-group test">
-          <a href="{% url 'test4:result_classify' num=1 %}" class="btn btn-info">
-            <button>
-              <h1 class="medium_btn">종목별 유사군 분류</h1>
-            </button>
-          </a>
-        </div>
-
         <div class="btn-group test">
           <a href="{% url 'test4:result_classify' num=2 %}" class="btn btn-info">
             <button>
-              <h1 class="medium_btn">뉴스 텍스트 마이닝</h1>
+              <h1 class="btn">재설정하기</h1>
             </button>
           </a>
-        </div>
-
-
-        <div class="btn-group_vert test">
         </div>
         <div class="btn-group_vert test">
           <a href="{% url 'main:index' %}" class="btn btn-info">
@@ -51,9 +109,6 @@
             </button>
           </a>
         </div>
-    </div>
-    <div class="subtite">
-        <h1 class="subtext2"> </h1>
     </div>
 
  <div class="btn_idx_group">
@@ -86,6 +141,7 @@
             <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
         </div>
   </div>
+
 
 </body>
 </html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+
+{% load static %}
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="{% static 'test1/style_blank14.css' %}">
+    <link rel="icon" href="{% static 'main/favicon.ico' %}">
+  <script type="text/javascript" src="/static/main/cat.js"></script>
+    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script data-ad-client="ca-pub-9317952330520251" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <title>뉴스 텍스트 마이닝</title>
+</head>
+
+<body>
+    <h1 class="title2">뉴스 텍스트 마이닝</h1>
+    <div class="big-bubble">
+        <h1 class="nametag">텍스트 마이닝이란?</h1>
+        <div class="align-text-box">
+            <div class="text-box">
+                <h1 class="content">텍스트 마이닝은</h1>
+                <h1 class="higlight_conent">뉴스, 웹페이지 등 텍스트 데이터로부터 가치와 의미가 있는 정보를 추출해 분석하는 방법입니다.</h1>
+            </div>
+            <div class="text-box">
+                <h1 class="content">대부분의 투자자들은 뉴스와 주가는 밀접한 관계가 있을 것으로 기대하지만, 한 사람이 수많은 뉴스를 모두 읽으며</h1>
+            </div>
+            <div class="text-box">
+                <h1 class="content">그 속에 담긴 의미있는 정보를 찾아내는 것은 불가능에 가까울 것 입니다. 하지만 컴퓨터가 대신한다면 어떨까요?</h1>
+            </div>
+            <div class="text-box">
+                <h1 class="start_higlight_conent">사용자가 원하는 종목에 관련된 다양한 뉴스속에서 의미있는 정보들을 찾아내고 시각화까지 할 수 있을 것입니다.</h1>
+            </div>
+            <div class="text-box">
+                <h1 class="start_higlight_conent">이를 통해 직접 모든 뉴스를 일일이 읽지 않더라도 종목 관련 키워드와 트렌드를 한눈에 확인 할 수 있습니다.</h1>
+            </div>
+        </div>
+    </div>
+<!--    <div class="big-bubble">-->
+<!--        <h1 class="nametag">기준 종목이란?</h1>-->
+<!--        <div class="align-text-box">-->
+<!--            <div class="text-box">-->
+<!--                <h1 class="content">일반적으로 데이터를 분류하기 위해서는 특정한 기준이 필요합니다. 그러나 클러스터링은 그 기준을 스스로 정의합니다.</h1>-->
+<!--            </div>-->
+<!--            <div class="text-box">-->
+<!--                <h1 class="start_higlight_conent">무작정 복잡한 데이터를 클러스터링으로 분류한다면 그 결과를 보더라도 이해할 수 없을것입니다.</h1>-->
+<!--                <h1 class="content_space_tail">따라서 일별 수익률을</h1>-->
+<!--            </div>-->
+
+<!--            <div class="text-box">-->
+<!--                <h1 class="content">입력 데이터로 변환해 클러스터링 합니다. 이때 기준 종목 A를 선정한다면, 클러스터링이 분류한 수 많은 군집중 손쉽게</h1>-->
+<!--            </div>-->
+
+<!--            <div class="text-box">-->
+<!--                <h1 class="content">A와 가장 유사한 종목들을 선정할 수 있습니다.</h1>-->
+<!--                <h1 class="higlight_conent">자신이 원하는 수익률 흐름과 가장 유사한 종목군을 선정하세요.</h1>-->
+<!--            </div>-->
+
+<!--        </div>-->
+<!--    </div>-->
+
+    <div class="big-bubble">
+        <h1 class="tip"></h1>
+        <div class="align-text-box">
+            <div class="tip-box">
+                <h1 class="tip_highlight_start_content">최근 트렌드를 확인하거나 관련 뉴스 데이터를 수집하고 싶은 종목을 입력해주세요.</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="btn_idx_group_close">
+        <form action="{% url 'test4:detail_classify' idx=2 %}" method="get">
+            <div class="label-box">
+                <label>종목명 또는 종목코드 : <input type="text" name="code" placeholder="ex) 카카오" size="7"></label>
+            </div>
+            <div class="btn-box">
+                <button id="Select"  type="submit">
+                    <h1 class="btn">종목 분석하기</h1>
+                </button>
+            </div>
+        </form>
+<!--        <div class="btn-group_vert test">-->
+<!--          <a href="{% url 'test4:payment' idx=0 %}" class="btn btn-info">-->
+<!--            <button>-->
+<!--              <h1 class="small_btn">도움이 필요하신가요?</h1>-->
+<!--            </button>-->
+<!--          </a>-->
+<!--        </div>-->
+    </div>
+    <div class="subtite">
+        <h1 class="subtext2"> </h1>
+    </div>
+
+
+ <div class="btn_idx_group">
+        <div class="clickmon_padding">
+            <ins class="kakao_ad_area" style="display:none;"
+             data-ad-unit    = "DAN-US3AzG2s4wVbdDUx"
+             data-ad-width   = "728"
+             data-ad-height  = "90"></ins>
+            <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
+        </div>
+        <div class="clickmon_padding">
+            <ins class="kakao_ad_area" style="display:none;"
+             data-ad-unit    = "DAN-eq6WX07CTBbJqb5Y"
+             data-ad-width   = "320"
+             data-ad-height  = "50"></ins>
+            <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
+        </div>
+        <div class="clickmon_padding">
+            <ins class="kakao_ad_area" style="display:none;"
+             data-ad-unit    = "DAN-lKcHICWJnFmU5DOr"
+             data-ad-width   = "320"
+             data-ad-height  = "100"></ins>
+            <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
+        </div>
+        <div class="clickmon_padding">
+            <ins class="kakao_ad_area" style="display:none;"
+             data-ad-unit    = "DAN-l07r9TxgLH6FApez"
+             data-ad-width   = "728"
+             data-ad-height  = "90"></ins>
+            <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
+        </div>
+  </div>
+
+<div id="loading">
+    <div class="loading">Loading&#8230;</div>
+</div>
+<script>
+$(document).ready(function() {
+    $('#loading').hide();
+    $("#Select").bind("click",function(){
+        $('#loading').show();
+         return true;
+    });
+});
+</script>
+</body>
+</html>
+
+<!--Copyright (c) 2021 by CookiePanda (https://codepen.io/CookiePanda/pen/XqWvdW)-->
+
+<!--Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:-->
+
+<!--The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.-->
+
+<!--THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.-->
+
+
+<!--Copyright (c) 2021 by Philip Park (https://codepen.io/PhilipMothPark/pen/XMrPRw)-->
+
+<!--Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:-->
+
+<!--The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.-->
+
+<!--THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.-->
