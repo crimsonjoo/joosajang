@@ -381,7 +381,7 @@ def detail_classify(request,idx):  # 분류 카테고리의 최종 결과값
                 page += 1
         def convert_to_code(company, maxpage):
 
-            data = pd.read_csv('./joosajang/test4/static/test4/company_list.txt', dtype=str, sep='\t')  # 종목코드 추출
+            data = pd.read_csv('./joosajang/test4/static/test4/company_list.txt', dtype=str, sep='\t')  # path에 joosajang이 붙는 이유는 웹사이트(pythonanywhere)에서 메인 디렉토리가 포함되어야 하기 때문
             company_name = data['회사명']
             keys = [i for i in company_name]  # 데이터프레임에서 리스트로 바꾸기
 
@@ -420,7 +420,7 @@ def detail_classify(request,idx):  # 분류 카테고리의 최종 결과값
                         token_list.append(word)
             return token_list
 
-        company_name, company_code =convert_to_code(special_code, 400)
+        company_name, company_code =convert_to_code(special_code, 100)
         clean_list = [clean_str(sentence) for sentence in total_list]
         tokens = tokenize_str(clean_list)
         text = ""
@@ -429,7 +429,7 @@ def detail_classify(request,idx):  # 분류 카테고리의 최종 결과값
 
         wordcloud = WordCloud(font_path='./joosajang/test4/static/test4/KOTRA_BOLD.ttf',
                               max_font_size=45,
-                              background_color='white').generate(text)
+                              background_color='white').generate(text) # path에 joosajang이 붙는 이유는 웹사이트(pythonanywhere)에서 메인 디렉토리가 포함되어야 하기 때문
         fig = plt.gcf()
         plt.imshow(wordcloud, interpolation='lanczos')
         plt.axis('off')
