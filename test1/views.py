@@ -416,6 +416,9 @@ def detail(request,idx):  # 여기선 결과물이  idx 0 : 종목 분석 결과
         final_df = final_df.head(stock_second_count)
         final_df.index = pd.Index(range(stock_second_count))
 
+        fin_name_list = final_df['company'].values.tolist()
+        fin_code_list = final_df['code'].values.tolist()
+
         stocks = final_df['code'].values.tolist()
         ex_df = pd.DataFrame()
         for s in stocks:
@@ -480,8 +483,8 @@ def detail(request,idx):  # 여기선 결과물이  idx 0 : 종목 분석 결과
         max_sharpe = [int(ratio*100) for ratio in max_sharpe]
         min_risk = [int(ratio * 100) for ratio in min_risk]
 
-        max_sharpe = list(zip(codes,names,max_sharpe))
-        min_risk = list(zip(codes,names, min_risk))
+        max_sharpe = list(zip(fin_code_list,fin_name_list,max_sharpe))
+        min_risk = list(zip(fin_code_list,fin_name_list, min_risk))
 
         # ######################## 빠른 실행을 위한 임의식########################################
         # today = datetime.today()

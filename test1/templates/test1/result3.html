@@ -70,32 +70,42 @@
         <h1 class="tip"> </h1>
         <div class="align-text-box">
             <div class="tip-box">
-                <h1 class="tip_highlight_content">금일 기준으로 매번 새로이 코스닥 시장에 상장된 모든 종목에 해당 전략을 적용합니다.</h1>
+                <h1 class="tip_highlight_content">[듀얼 모멘텀 투자법]을 이용해 코스닥(KOSDAQ) 시장에 상장된 모든 종목을 분석한 뒤 선정해 보고서를 작성합니다.</h1>
             </div>
             <div class="tip-box">
-                <h1 class="tip_highlight_content"><종목 선정하기>클릭시, 계산 완료까지 필요한 시간은 대략 40분 내외로 예상합니다.</h1>
+                <h1 class="tip_highlight_content"></h1>
             </div>
             <div class="tip-box">
-                <h1 class="tip_highlight_content">사용자의 요청이 많을 경우, 서버 안정화를 위해 결과물 연산이 취소될 수 있습니다.</h1>
+                <h1 class="tip_highlight_content"></h1>
             </div>
             <div class="tip-box">
-                <h1 class="tip_highlight_content">외부 서버로부터 결과물 확인을 원하시면 <도움이 필요하신가요?> 버튼을 눌러주세요.</h1>
+                <h1 class="tip_highlight_content"><종목 선정 보고서> 클릭시, 네이버 프리미엄 콘텐츠 『자산은 잠들지 않는다』으로 이동해 보고서를 확인할 수 있습니다.</h1>
+            </div>
+            <div class="tip-box">
+                <h1 class="tip_highlight_content"><1:1 클래스 신청> 클릭시, 네이버 지식인 엑스퍼트 『주사장』으로 이동해 전문가와 1:1 클래스/상담 신청할 수 있습니다.</h1>
             </div>
         </div>
     </div>
 
     <div class="btn_idx_group ">
         <div class="btn-group test">
-          <a href="{% url 'test1:detail' idx=3  %}" class="btn btn-info">
+          <a href="https://contents.premium.naver.com/assetneversleeps/assetneversleep/contents?categoryId=182ec84206b00010z" class="btn btn-info">
             <button id="Select">
-              <h1 class="btn">종목 선정하기</h1>
+              <h1 class="btn">종목 선정 보고서</h1>
+            </button>
+          </a>
+        </div>
+        <div class="btn-group test">
+          <a href="https://m.expert.naver.com/expert/profile/home?storeId=100033790" class="btn btn-info">
+            <button id="Select">
+              <h1 class="btn">1:1 클래스 신청</h1>
             </button>
           </a>
         </div>
         <div class="btn-group_vert test">
-          <a href="{% url 'test1:payment' idx=1 %}" class="btn btn-info">
+          <a href="{% url 'main:index' %}" class="btn btn-info">
             <button>
-              <h1 class="small_btn">도움이 필요하신가요?</h1>
+              <h1 class="small_btn">메인화면으로</h1>
             </button>
           </a>
         </div>
@@ -105,6 +115,11 @@
     </div>
 
  <div class="btn_idx_group">
+         <div class="img_box_jocoding">
+            <a href="https://contents.premium.naver.com/assetneversleeps/assetneversleep" class="btn btn-info">
+              <img src="{% static "main/forkakao.png" %}">
+            </a>
+        </div>
         <div class="clickmon_padding">
             <ins class="kakao_ad_area" style="display:none;"
              data-ad-unit    = "DAN-US3AzG2s4wVbdDUx"
