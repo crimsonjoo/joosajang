@@ -197,25 +197,37 @@
 </div>
 
 <div class="btn_idx_group_close">
-        <div class="btn-group test">
-            <div class="btn_idx_group_close">
-                <form action="{% url 'test1:detail' idx=0 %}" method="get">
-                    <div class="label-box">
-                        <label> 종목코드 : <input type="text" name="code" placeholder="ex) 226490" size="7"></label>
-                        <label>/ </label>
-                        <label>조회 기준일 : <input type="text" name="date" placeholder="ex) 1996-02-29" size="10"></label>
-                    </div>
-                    <div class="btn-box">
-                        <button id="Select"  type="submit">
-                            <h1 class="btn">종목 분석하기</h1>
-                        </button>
-                    </div>
-                </form>
-            </div>
+    <div class="btn-group test">
+        <div class="btn_idx_group_close">
+            <form action="{% url 'test1:detail' idx=0 %}" method="get">
+                <div class="label-box">
+                    <label> 종목코드 : <input type="text" name="code" placeholder="ex) 226490" size="7"></label>
+                    <label>/ </label>
+                    <label>조회 기준일 : <input type="text" name="date" placeholder="ex) 1996-02-29" size="10"></label>
+                </div>
+                <div class="btn-box">
+                    <button id="Select"  type="submit">
+                        <h1 class="btn">종목 분석하기</h1>
+                    </button>
+                </div>
+            </form>
         </div>
+    </div>
+    <div class="btn-group_vert test">
+          <a href="{% url 'main:index' %}" class="btn btn-info">
+            <button>
+              <h1 class="small_btn">메인화면으로</h1>
+            </button>
+          </a>
+    </div>
 </div>
 
  <div class="btn_idx_group">
+        <div class="img_box_jocoding">
+            <a href="https://contents.premium.naver.com/assetneversleeps/assetneversleep" class="btn btn-info">
+              <img src="{% static "main/forexpert.png" %}">
+            </a>
+        </div>
         <div class="img_box_jocoding">
             <a href="https://contents.premium.naver.com/assetneversleeps/assetneversleep" class="btn btn-info">
               <img src="{% static "main/forkakao.png" %}">
