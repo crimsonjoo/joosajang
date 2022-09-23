@@ -119,7 +119,7 @@ def detail(request,idx):  #여기선 결과물이 idx 0: 볼린저추세추종, 
                     own_price = 0
         plt.legend(loc='best')
         plt.subplot(3, 1, 2)
-        plt.plot(df.index, df['PB'] * 100, 'g-', label='%B x 100')  # ⑤
+        plt.plot(df.index, df['PB'] * 100, 'g-', label='%B')  # ⑤
         plt.yticks([-20, 0, 20, 40, 60, 80, 100, 120])  # ⑦
         for i in range(len(df.Close)):
             if df.PB.values[i] > 0.8 and df.MFI10.values[i] > 80:
@@ -202,7 +202,7 @@ def detail(request,idx):  #여기선 결과물이 idx 0: 볼린저추세추종, 
         plt.legend(loc='best')
 
         plt.subplot(3, 1, 2)
-        plt.plot(df.index, df['PB'], 'g', label='%B')
+        plt.plot(df.index, df['PB']*100 , 'g', label='%B')
         plt.grid(True)
         plt.legend(loc='upper left')
 
