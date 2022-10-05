@@ -264,6 +264,7 @@ def detail(request,idx):  #여기선 결과물이 idx 0: 볼린저추세추종, 
         plt.grid(True)
         p2.xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m'))
         plt.plot(df.number, df['ema130'], color='k', label='EMA (130)')
+        plt.yticks(color='w')
 
         buy_list = []
         sell_list = []
@@ -353,6 +354,7 @@ def detail(request,idx):  #여기선 결과물이 idx 0: 볼린저추세추종, 
         plt.bar(df.number, df['macdhist'], color='c', label='MACD-Hist')
         plt.plot(df.number, df['macd'], color='k', label='MACD')
         plt.plot(df.number, df['signal'], 'y:', label='MACD-Signal')
+        plt.yticks(color='w')
 
         buy_list = []
         sell_list = []
@@ -436,6 +438,7 @@ def detail(request,idx):  #여기선 결과물이 idx 0: 볼린저추세추종, 
         p3.xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m'))
         plt.plot(price_df.number, price_df['ema5'], color='g', linestyle='solid', label='EMA 5')
         plt.plot(price_df.number, price_df['ema20'], color='k', linestyle='solid', label='EMA 20')
+        plt.yticks(color='w')
 
         buy_list = []
         sell_list = []
@@ -510,6 +513,7 @@ def detail(request,idx):  #여기선 결과물이 idx 0: 볼린저추세추종, 
         p3.xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m'))
         plt.plot(price_df.number, price_df['ema20'], color='g', linestyle='solid', label='EMA 20')
         plt.plot(price_df.number, price_df['ema60'], color='k', linestyle='solid', label='EMA 60')
+        plt.yticks(color= 'w')
 
         buy_list = []
         sell_list = []
