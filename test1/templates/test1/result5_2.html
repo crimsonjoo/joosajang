@@ -8,72 +8,116 @@
     <link rel="icon" href="{% static 'main/favicon.ico' %}">
   <script type="text/javascript" src="/static/main/cat.js"></script>
     <script data-ad-client="ca-pub-9317952330520251" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-  <title>내 성향에 맞는 종목 선정 - 사용자 지정 조회</title>
+  <title>주사장의 보고서</title>
 </head>
 
 <body>
-<!--  <div class="body"></div>-->
 
-<!--    <div class="title">-->
-<!--        <h1 class="title subtext2">나에게 맞는 투자종목은?</h1>-->
-<!--    </div>-->
+    <h1 class="title2">종목 분석 보고서</h1>
 
-    <div class="subtite">
-        <h1 class="subtext2">원하시는 결과를 선택해주세요.</h1>
+    <h1 class="img_caption">{{name}} ({{code}})</h1>
+    <div class="img_box">
+        <img src={{uri}}>
     </div>
+
+    <div class="table_box">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">단순 수익률(%)</th>
+              <th scope="col">연평균 복리 수익률(%)</th>
+              <th scope="col">최대 낙폭(%)</th>
+              <th scope="col">변동성(%)</th>
+              <th scope="col">샤프 지수</th>
+            </tr>
+          </thead>
+              <tbody>
+                <tr>
+                    <td data-label="Account">{{returns}}</td>
+                    <td data-label="Due Date">{{CAGR}}</td>
+                    <td data-label="Amount">{{MDD}}</td>
+                    <td data-label="Period">{{VOL}}</td>
+                    <td data-label="Period">{{SHARPE}}</td>
+                </tr>
+              </tbody>
+        </table>
+    </div>
+    <div class="big-bubble">
+        <div class="align-text-box">
+            <div class="text-box">
+                <h1 class="start_higlight_conent">▶ 단순 수익률 : 해당 종목 투자 시 발생했을 단순 계산 수익률 ({{start}} ~ {{today}})</h1>
+            </div>
+
+            <div class="text-box">
+                <h1 class="content"></h1>
+            </div>
+            <div class="text-box">
+                <h1 class="start_higlight_conent">▶ 연평균 복리 수익률 : 해당 종목의 복리 개념 연평균 성장률 (높을수록 좋음)</h1>
+            </div>
+
+            <div class="text-box">
+                <h1 class="content">(※ 위험 : nan / 주의 : 0% ~ 3% / 보통 : 3% ~ 15% / 좋음 : 15% ~ 30% / 최상 : 30% 이상 )</h1>
+            </div>
+
+            <div class="text-box">
+                <h1 class="content"></h1>
+            </div>
+
+            <div class="text-box">
+                <h1 class="start_higlight_conent">▶ 최대 낙폭 : 해당 종목에 투자 시 느낄 수 있는 최대 고통 수치 (낮을수록 좋음)</h1>
+            </div>
+
+            <div class="text-box">
+                <h1 class="content">(※ 최상 : 0% ~ 10% / 좋음 : 10% ~ 25% / 보통 : 25% ~ 50% / 주의 : 50% 이상 )</h1>
+            </div>
+
+            <div class="text-box">
+                <h1 class="content"></h1>
+            </div>
+
+            <div class="text-box">
+                <h1 class="start_higlight_conent">▶ 변동성 : 해당 종목의 가격이 상승하거나 하락한 변동폭 (수익 또는 손실이 발생할 확률)</h1>
+            </div>
+
+            <div class="text-box">
+                <h1 class="content">(※ 낮을수록 안정적, 높을수록 변동적)</h1>
+            </div>
+
+            <div class="text-box">
+                <h1 class="content"></h1>
+            </div>
+
+            <div class="text-box">
+                <h1 class="start_higlight_conent">▶ 샤프 지수 : 위험 대비 수익성 (최소 0 이상 되야 투자 대상으로 고려함)</h1>
+            </div>
+
+            <div class="text-box">
+                <h1 class="content">(※ 주의 : 0 미만 / 보통 : 0 ~ 0.5 / 좋음 : 0.5 ~ 1.0 / 최상 : 1.0 이상 )</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="big-bubble">
+        <h1 class="tip"> </h1>
+        <div class="align-text-box">
+            <div class="tip-box">
+                <h1 class="tip_highlight_start_content">투자 판단에 대한 최종적인 책임과 결정은 투자자 본인에게 있습니다.</h1>
+            </div>
+            <div class="tip-box">
+                <h1 class="tip_highlight_start_content">투자 시 발생하는 수익과 손실은 모두 투자자 본인에게 귀속됩니다.</h1>
+            </div>
+        </div>
+    </div>
+
+
 
     <div class="btn_idx_group">
         <div class="btn-group test">
-          <a href="{% url 'test1:result' num=0 %}" class="btn btn-info">
-            <button>
-              <h1 class="medium_btn">국내 주식 ETF</h1>
-            </button>
-          </a>
-        </div>
-        <div class="btn-group test">
-          <a href="{% url 'test1:result' num=4 %}" class="btn btn-info">
-            <button>
-              <h1 class="medium_btn">해외 주식 ETF</h1>
-            </button>
-          </a>
-        </div>
-        <div class="btn-group test">
           <a href="{% url 'test1:result' num=5 %}" class="btn btn-info">
             <button>
-              <h1 class="medium_btn">채권 ETF</h1>
+              <h1 class="btn">재설정하기</h1>
             </button>
           </a>
-        </div>
-        <div class="btn-group test">
-          <a href="{% url 'test1:result' num=1 %}" class="btn btn-info">
-            <button>
-              <h1 class="medium_btn">파생상품 ETF</h1>
-            </button>
-          </a>
-        </div>
-        <div class="btn-group test">
-          <a href="{% url 'test1:result' num=6 %}" class="btn btn-info">
-            <button>
-              <h1 class="medium_btn">기타상품 ETF</h1>
-            </button>
-          </a>
-        </div>
-        <div class="btn-group test">
-          <a href="{% url 'test1:result' num=2 %}" class="btn btn-info">
-            <button>
-              <h1 class="medium_btn">마법공식 개별종목</h1>
-            </button>
-          </a>
-        </div>
-        <div class="btn-group test">
-          <a href="{% url 'test1:result' num=3 %}" class="btn btn-info">
-            <button>
-              <h1 class="medium_btn">듀얼 모멘텀 개별종목</h1>
-            </button>
-          </a>
-        </div>
-
-        <div class="btn-group_vert test">
         </div>
         <div class="btn-group_vert test">
           <a href="{% url 'main:index' %}" class="btn btn-info">
@@ -83,22 +127,19 @@
           </a>
         </div>
     </div>
-    <div class="subtite">
-        <h1 class="subtext2"> </h1>
-    </div>
 
  <div class="btn_idx_group">
-     <div class="img_box_jocoding">
+         <div class="img_box_jocoding">
             <a href="https://m.expert.naver.com/expert/profile/home?storeId=100033790" class="btn btn-info">
               <img src="{% static "main/banner1.png" %}">
             </a>
         </div>
         <div class="img_box_jocoding">
         </div>
-        <div class="img_box_jocoding">
-            <a href="https://contents.premium.naver.com/assetneversleeps/assetneversleep" class="btn btn-info">
-              <img src="{% static "main/assetneversleeps2.png" %}">
-            </a>
+         <div class="img_box_jocoding">
+                <a href="https://contents.premium.naver.com/assetneversleeps/assetneversleep" class="btn btn-info">
+                  <img src="{% static "main/banner2.png" %}">
+                </a>
         </div>
         <div class="clickmon_padding">
             <ins class="kakao_ad_area" style="display:none;"

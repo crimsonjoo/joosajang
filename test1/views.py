@@ -60,9 +60,15 @@ def result(request,num):
         return render(request, 'test1/result2.html')
     elif num == 3:
         return render(request, 'test1/result3.html')
+    elif num == 4:
+        return render(request, 'test1/result4.html')
+    elif num == 5:
+        return render(request, 'test1/result5.html')
+    elif num == 6:
+        return render(request, 'test1/result6.html')
 
 def detail(request,idx):  # 여기선 결과물이  idx 0 : 종목 분석 결과물 , idx 1: 레버리지 결과물 , idx 2: 마법공식, 3:듀얼모멘텀 일때밖에 없다.
-    if idx == 0:
+    if idx == 0:  # 국내 주식 ETF
         today = datetime.today()
         today_str = today.strftime("%Y-%m-%d")
         queryDict = dict(request.GET)
@@ -112,7 +118,7 @@ def detail(request,idx):  # 여기선 결과물이  idx 0 : 종목 분석 결과
                       {'uri':uri,'start': start_date, 'today': today_str, 'code': code, 'name': name,
                        'returns': int(simple_return), 'CAGR': round(CAGR, 2), 'SHARPE': round(Sharpe, 2),
                        'VOL': round(VOL * 100, 2), 'MDD': round(-1 * MDD * 100, 2)})
-    elif idx == 1: #  골든&데드 크로스 전략으로 분석한 결과
+    elif idx == 1:  # 파생상품 ETF
         today = datetime.today()
         today_str = today.strftime("%Y-%m-%d")
         queryDict = dict(request.GET)
@@ -123,59 +129,33 @@ def detail(request,idx):  # 여기선 결과물이  idx 0 : 종목 분석 결과
 
         price_df = fdr.DataReader(code, start_date)
         price_df = price_df.dropna()
-
         name_df = fdr.StockListing('KRX')
         name = name_df.loc[name_df['Symbol'] == code, 'Name'].values[0]
 
-        price_df['ema5'] = price_df.Close.ewm(span=5).mean()
-        price_df['ema20'] = price_df.Close.ewm(span=20).mean()
         price_df['st_rtn'] = (1 + price_df['Change']).cumprod()
-        price_df = price_df.dropna()
-        price_df['number'] = price_df.index.map(mdates.date2num)
 
-        ohlc = price_df[['number', 'Open', 'High', 'Low', 'Close']]
-        plt.figure(figsize=(9, 9))
-        p1 = plt.subplot(2, 1, 1)
-        plt.title('Golden Cross & Dead Cross Trade')
-        plt.grid(True)
-        candlestick_ohlc(p1, ohlc.values, width=.6, colorup='red', colordown='blue')
-        p1.xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m'))
+        historical_max = price_df['Close'].cummax()
+        daily_drawdown = price_df['Close'] / historical_max - 1.0
+        historical_dd = daily_drawdown.cummin()  ## 최대 낙폭
 
-        p3 = plt.subplot(2, 1, 2)
-        plt.grid(True)
-        p3.xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m'))
-        plt.plot(price_df.number, price_df['ema5'], color='g', linestyle='solid', label='EMA 5')
-        plt.plot(price_df.number, price_df['ema20'], color='k', linestyle='solid', label='EMA 20')
+        MDD = historical_dd.min()
+        simple_return = ((price_df['st_rtn'].values[-1]-1) * 100)
+        CAGR = simple_return ** (252. / len(price_df.index)) - 1  # 연평균 복리 수익률
+        VOL = np.std(price_df['Change']) * np.sqrt(252.)
+        Sharpe = np.mean(price_df['Change']) / np.std(price_df['Change']) * np.sqrt(252.)
 
-        buy_list = []
-        sell_list = []
-        returns = 0
-        own_price = 0
-        for i in range(1, len(price_df.Close)):
-            if price_df['ema5'].values[i] > price_df['ema20'].values[i] and price_df['ema5'].values[i - 1] < \
-                    price_df['ema20'].values[i - 1]:
-                plt.plot(price_df.number.values[i], price_df['ema5'].values[i], 'r^')
-                date = np.datetime_as_string(price_df.index.values[i], unit='D')
-                cost = price_df.Close.values[i]
-                if own_price == 0:
-                    own_price += cost
-                    buy_list.append([date, cost])
-            elif price_df['ema5'].values[i] < price_df['ema20'].values[i] and price_df['ema5'].values[i - 1] > \
-                    price_df['ema20'].values[i - 1]:
-                plt.plot(price_df.number.values[i], price_df['ema5'].values[i], 'bv')
-                date = np.datetime_as_string(price_df.index.values[i], unit='D')
-                cost = price_df.Close.values[i]
-                if own_price != 0:
-                    returns += ((cost / own_price) - 1) * 100
-                    own_price = 0
-                    sell_list.append([date, cost])
-            if i == (len(price_df.Close) - 1):  # 매수했었는데 마지막 날까지 매도 신호가 안나왔다면 현재의 수익률을 환산
-                cost = price_df.Close.values[i]
-                if own_price != 0:
-                    returns += ((cost / own_price) - 1) * 100
-                    own_price = 0
-        plt.legend(loc='upper left')
+        # print('returns :', simple_return, '%')
+        # print('CAGR :', round(CAGR, 2), '%')
+        # print('Sharpe :', round(Sharpe, 2))
+        # print('VOL :', round(VOL * 100, 2), '%')
+        # print('MDD :', round(-1 * MDD * 100, 2), '%')
 
+        df = price_df[['Open', 'High', 'Low', 'Close', 'Volume']]
+        kwargs = dict(type='candle', volume=True)
+        mc = mpf.make_marketcolors(up='r', down='b', inherit=True)
+        s = mpf.make_mpf_style(marketcolors=mc)
+
+        mpf.plot(df, **kwargs, style=s)
         fig = plt.gcf()
         buf = io.BytesIO()
 
@@ -184,7 +164,10 @@ def detail(request,idx):  # 여기선 결과물이  idx 0 : 종목 분석 결과
         string = base64.b64encode(buf.read())
         uri = 'data:image/png;base64,' + urllib.parse.quote(string)
 
-        return render(request, 'test1/result1_2.html', {'uri':uri,'start':start_date,'today':today_str,'code':code,'name':name,'returns':int(returns),'buy_list':buy_list,'sell_list':sell_list})
+        return render(request, 'test1/result1_2.html',
+                      {'uri':uri,'start': start_date, 'today': today_str, 'code': code, 'name': name,
+                       'returns': int(simple_return), 'CAGR': round(CAGR, 2), 'SHARPE': round(Sharpe, 2),
+                       'VOL': round(VOL * 100, 2), 'MDD': round(-1 * MDD * 100, 2)})
     elif idx == 2:  #마법공식
         def get_html_fnguide(ticker, gb):
             """
@@ -502,3 +485,153 @@ def detail(request,idx):  # 여기선 결과물이  idx 0 : 종목 분석 결과
         # min_risk = list(zip(codes,names, min_risk))
 
         return render(request, 'test1/result3_2.html',{'uri':uri,'table':table,'max_sharpe':max_sharpe,'min_risk':min_risk,'names':names,'today':today_str})
+    elif idx == 4:  # 해외 주식 ETF
+        today = datetime.today()
+        today_str = today.strftime("%Y-%m-%d")
+        queryDict = dict(request.GET)
+        code = queryDict['code'][0]
+        start_date = queryDict['date'][0]
+        if start_date[4] != '-':
+            start_date = str(start_date[:4]) + '-' + str(start_date[4:6]) + '-' + str(start_date[6:])
+
+        price_df = fdr.DataReader(code, start_date)
+        price_df = price_df.dropna()
+        name_df = fdr.StockListing('KRX')
+        name = name_df.loc[name_df['Symbol'] == code, 'Name'].values[0]
+
+        price_df['st_rtn'] = (1 + price_df['Change']).cumprod()
+
+        historical_max = price_df['Close'].cummax()
+        daily_drawdown = price_df['Close'] / historical_max - 1.0
+        historical_dd = daily_drawdown.cummin()  ## 최대 낙폭
+
+        MDD = historical_dd.min()
+        simple_return = ((price_df['st_rtn'].values[-1]-1) * 100)
+        CAGR = simple_return ** (252. / len(price_df.index)) - 1  # 연평균 복리 수익률
+        VOL = np.std(price_df['Change']) * np.sqrt(252.)
+        Sharpe = np.mean(price_df['Change']) / np.std(price_df['Change']) * np.sqrt(252.)
+
+        # print('returns :', simple_return, '%')
+        # print('CAGR :', round(CAGR, 2), '%')
+        # print('Sharpe :', round(Sharpe, 2))
+        # print('VOL :', round(VOL * 100, 2), '%')
+        # print('MDD :', round(-1 * MDD * 100, 2), '%')
+
+        df = price_df[['Open', 'High', 'Low', 'Close', 'Volume']]
+        kwargs = dict(type='candle', volume=True)
+        mc = mpf.make_marketcolors(up='r', down='b', inherit=True)
+        s = mpf.make_mpf_style(marketcolors=mc)
+
+        mpf.plot(df, **kwargs, style=s)
+        fig = plt.gcf()
+        buf = io.BytesIO()
+
+        fig.savefig(buf, format='png')
+        buf.seek(0)
+        string = base64.b64encode(buf.read())
+        uri = 'data:image/png;base64,' + urllib.parse.quote(string)
+
+        return render(request, 'test1/result4_2.html',
+                      {'uri':uri,'start': start_date, 'today': today_str, 'code': code, 'name': name,
+                       'returns': int(simple_return), 'CAGR': round(CAGR, 2), 'SHARPE': round(Sharpe, 2),
+                       'VOL': round(VOL * 100, 2), 'MDD': round(-1 * MDD * 100, 2)})
+    elif idx == 5:  # 채권 ETF
+        today = datetime.today()
+        today_str = today.strftime("%Y-%m-%d")
+        queryDict = dict(request.GET)
+        code = queryDict['code'][0]
+        start_date = queryDict['date'][0]
+        if start_date[4] != '-':
+            start_date = str(start_date[:4]) + '-' + str(start_date[4:6]) + '-' + str(start_date[6:])
+
+        price_df = fdr.DataReader(code, start_date)
+        price_df = price_df.dropna()
+        name_df = fdr.StockListing('KRX')
+        name = name_df.loc[name_df['Symbol'] == code, 'Name'].values[0]
+
+        price_df['st_rtn'] = (1 + price_df['Change']).cumprod()
+
+        historical_max = price_df['Close'].cummax()
+        daily_drawdown = price_df['Close'] / historical_max - 1.0
+        historical_dd = daily_drawdown.cummin()  ## 최대 낙폭
+
+        MDD = historical_dd.min()
+        simple_return = ((price_df['st_rtn'].values[-1]-1) * 100)
+        CAGR = simple_return ** (252. / len(price_df.index)) - 1  # 연평균 복리 수익률
+        VOL = np.std(price_df['Change']) * np.sqrt(252.)
+        Sharpe = np.mean(price_df['Change']) / np.std(price_df['Change']) * np.sqrt(252.)
+
+        # print('returns :', simple_return, '%')
+        # print('CAGR :', round(CAGR, 2), '%')
+        # print('Sharpe :', round(Sharpe, 2))
+        # print('VOL :', round(VOL * 100, 2), '%')
+        # print('MDD :', round(-1 * MDD * 100, 2), '%')
+
+        df = price_df[['Open', 'High', 'Low', 'Close', 'Volume']]
+        kwargs = dict(type='candle', volume=True)
+        mc = mpf.make_marketcolors(up='r', down='b', inherit=True)
+        s = mpf.make_mpf_style(marketcolors=mc)
+
+        mpf.plot(df, **kwargs, style=s)
+        fig = plt.gcf()
+        buf = io.BytesIO()
+
+        fig.savefig(buf, format='png')
+        buf.seek(0)
+        string = base64.b64encode(buf.read())
+        uri = 'data:image/png;base64,' + urllib.parse.quote(string)
+
+        return render(request, 'test1/result5_2.html',
+                      {'uri':uri,'start': start_date, 'today': today_str, 'code': code, 'name': name,
+                       'returns': int(simple_return), 'CAGR': round(CAGR, 2), 'SHARPE': round(Sharpe, 2),
+                       'VOL': round(VOL * 100, 2), 'MDD': round(-1 * MDD * 100, 2)})
+    elif idx == 6:  # 기타상품 ETF
+        today = datetime.today()
+        today_str = today.strftime("%Y-%m-%d")
+        queryDict = dict(request.GET)
+        code = queryDict['code'][0]
+        start_date = queryDict['date'][0]
+        if start_date[4] != '-':
+            start_date = str(start_date[:4]) + '-' + str(start_date[4:6]) + '-' + str(start_date[6:])
+
+        price_df = fdr.DataReader(code, start_date)
+        price_df = price_df.dropna()
+        name_df = fdr.StockListing('KRX')
+        name = name_df.loc[name_df['Symbol'] == code, 'Name'].values[0]
+
+        price_df['st_rtn'] = (1 + price_df['Change']).cumprod()
+
+        historical_max = price_df['Close'].cummax()
+        daily_drawdown = price_df['Close'] / historical_max - 1.0
+        historical_dd = daily_drawdown.cummin()  ## 최대 낙폭
+
+        MDD = historical_dd.min()
+        simple_return = ((price_df['st_rtn'].values[-1]-1) * 100)
+        CAGR = simple_return ** (252. / len(price_df.index)) - 1  # 연평균 복리 수익률
+        VOL = np.std(price_df['Change']) * np.sqrt(252.)
+        Sharpe = np.mean(price_df['Change']) / np.std(price_df['Change']) * np.sqrt(252.)
+
+        # print('returns :', simple_return, '%')
+        # print('CAGR :', round(CAGR, 2), '%')
+        # print('Sharpe :', round(Sharpe, 2))
+        # print('VOL :', round(VOL * 100, 2), '%')
+        # print('MDD :', round(-1 * MDD * 100, 2), '%')
+
+        df = price_df[['Open', 'High', 'Low', 'Close', 'Volume']]
+        kwargs = dict(type='candle', volume=True)
+        mc = mpf.make_marketcolors(up='r', down='b', inherit=True)
+        s = mpf.make_mpf_style(marketcolors=mc)
+
+        mpf.plot(df, **kwargs, style=s)
+        fig = plt.gcf()
+        buf = io.BytesIO()
+
+        fig.savefig(buf, format='png')
+        buf.seek(0)
+        string = base64.b64encode(buf.read())
+        uri = 'data:image/png;base64,' + urllib.parse.quote(string)
+
+        return render(request, 'test1/result6_2.html',
+                      {'uri':uri,'start': start_date, 'today': today_str, 'code': code, 'name': name,
+                       'returns': int(simple_return), 'CAGR': round(CAGR, 2), 'SHARPE': round(Sharpe, 2),
+                       'VOL': round(VOL * 100, 2), 'MDD': round(-1 * MDD * 100, 2)})
